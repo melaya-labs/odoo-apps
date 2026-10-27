@@ -50,10 +50,10 @@
                         <setting id="melaya_privacy_setting" help="Calls go to api.melaya.org over HTTPS.">
                             <div class="text-muted">Model name, record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads the record through the Melaya Agent user. Changes Melaya makes in Odoo need an approval in Melaya.</div>
                             <div class="mt8">
-                                <a href="https://melaya.org/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+                                <a href="https://melaya.org/en/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
                             </div>
                             <div>
-                                <a href="https://melaya.org/dpa" target="_blank" rel="noopener noreferrer">Data processing agreement</a>
+                                <a href="https://melaya.org/en/legal/subprocessors" target="_blank" rel="noopener noreferrer">Subprocessors</a>
                             </div>
                         </setting>
                     </block>

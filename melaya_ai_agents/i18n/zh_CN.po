@@ -336,8 +336,8 @@ msgstr "创建时间"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
-msgid "Data processing agreement"
-msgstr "数据处理协议"
+msgid "Subprocessors"
+msgstr "次级处理者"
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__database_name

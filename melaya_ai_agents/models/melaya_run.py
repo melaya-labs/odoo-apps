@@ -31,6 +31,8 @@ USER_GROUP = "melaya_ai_agents.group_melaya_user"
 MAX_IDS_PER_CALL = 20  # runs/status takes 20 ids at most
 CALLS_PER_USER = 2  # per cron run (each minute); Melaya allows 30 status calls per user and minute
 MAX_CALLS = 40  # per cron run, all users together
+MAX_CARD_CALLS = 10  # per cron run: records with a "starting" placeholder to match
+PLACEHOLDER_GRACE = timedelta(seconds=30)  # the panel usually matches it first
 FOLLOW_FOR = timedelta(hours=24)  # stop following a run after a day
 FOLLOW_APPROVAL_FOR = timedelta(days=7)  # unless its approval reminder is still open
 PLACEHOLDER_MATCH = timedelta(minutes=2)  # clock slack when a "starting" run shows up in the card
@@ -227,8 +229,58 @@ class MelayaRun(models.Model):
         now = fields.Datetime.now()
         Runs._stop_following_old(now)
         if self.env["melaya.client"]._is_connected():
-            Runs._poll_statuses(now, commit=commit)
+            if Runs._match_placeholders(now, commit=commit):
+                Runs._poll_statuses(now, commit=commit)
         Runs._apply_effects(commit=commit)
+
+    def _match_placeholders(self, now, commit=False):
+        """Find the run id of runs Melaya answered "starting" for, when the
+        panel was closed before the run showed up: ask for the record's card as
+        the person who started it (the same call the panel makes) and match
+        like the panel does. Returns False when Melaya or the connection is
+        down (the caller then skips this cron run's status calls)."""
+        placeholders = self.search([
+            ("run_id", "=", False),
+            ("state", "=", rs.RUNNING),
+            ("create_date", "<", now - PLACEHOLDER_GRACE),
+        ], order="last_checked_at asc nulls first, id asc")
+        client = self.env["melaya.client"]
+        groups = placeholders.grouped(lambda r: (r.user_id, r.model, r.res_id))
+        for (user, model_name, res_id), runs in list(groups.items())[:MAX_CARD_CALLS]:
+            runs.write({"last_checked_at": now})
+            if not user.active or model_name not in self.env:
+                continue
+            record = self.env[model_name].with_user(user).browse(res_id)
+            try:
+                record.check_access("read")
+                if not record.exists():
+                    continue
+            except (AccessError, UserError):
+                continue
+            try:
+                data = client.with_user(user)._card(model_name, res_id)
+            except UserError as exc:
+                code = getattr(exc, "code", None) or "error"
+                _logger.warning("Melaya card check for a starting run failed: %s", code)
+                if code in STOP_CODES or (getattr(exc, "status", None) or 0) >= 500:
+                    return False
+                continue
+            items = [
+                {
+                    "run_id": str(item["run_id"]),
+                    "pipeline": str(item.get("pipeline") or ""),
+                    "name": str(item.get("name") or item.get("pipeline") or ""),
+                    "status": str(item.get("status") or ""),
+                    "started_at": str(item.get("started_at") or ""),
+                    "url": safe_url(item.get("url")) or "",
+                }
+                for item in (data.get("runs") or [])
+                if isinstance(item, dict) and item.get("run_id")
+            ]
+            self.with_user(user)._sync_from_panel(items, record=record)
+            if commit:
+                self.env["ir.cron"]._commit_progress(len(runs))
+        return True
 
     def _stop_following_old(self, now):
         """No more polling after a day (a week while the approval reminder is

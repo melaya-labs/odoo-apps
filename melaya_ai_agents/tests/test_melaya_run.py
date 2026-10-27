@@ -260,6 +260,35 @@ class TestMelayaRun(TransactionCase):
         )
         self.assertFalse(other.run_id)
 
+    def test_cron_matches_a_starting_run_without_the_panel(self):
+        Runs = self.env["melaya.run"].with_user(self.user_a)
+        old = Runs._record_start(self.partner, "quote-follow-up", status="starting")
+        fresh = self.env["melaya.run"].with_user(self.user_b)._record_start(self.partner, "quote-follow-up", status="starting")
+        # Only placeholders past the grace period are checked (the panel usually matches first).
+        self.env.cr.execute("UPDATE melaya_run SET create_date = create_date - interval '2 minutes' WHERE id = %s", [old.id])
+        old.invalidate_recordset(["create_date"])
+        test = self
+        cards = []
+
+        def card(client, model, record_id):
+            if client.env.uid not in test.test_user_ids:
+                return {"runs": []}
+            cards.append((client.env.uid, model, record_id))
+            return {"runs": [{
+                "run_id": "run_cron_01", "pipeline": "quote-follow-up", "name": "Quote follow-up",
+                "status": "approval_needed", "started_at": fields.Datetime.now().isoformat() + "Z",
+                "url": RUN_URL % "run_cron_01",
+            }]}
+
+        self.statuses["run_cron_01"] = "approval_needed"
+        with patch.object(MelayaClient, "_card", card), self._fake_status():
+            self.env["melaya.run"]._follow_runs()
+        self.assertEqual(cards, [(self.user_a.id, "res.partner", self.partner.id)], "one card call, as the requester")
+        self.assertEqual(old.run_id, "run_cron_01")
+        self.assertEqual(old.state, "approval")
+        self.assertTrue(old.activity_id, "the approval reminder follows once the run is known")
+        self.assertFalse(fresh.run_id)
+
     def test_panel_status_update_keeps_known_status(self):
         run = self._run(self.user_a, "run_keep_01", status="approval_needed", state="approval")
         self.env["melaya.run"].with_user(self.user_a)._sync_from_panel([{"run_id": "run_keep_01", "status": "started"}])

@@ -356,6 +356,11 @@ msgid "Subprocessors"
 msgstr "Mga Subprocessor"
 
 #. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Data processing agreement"
+msgstr "Kasunduan sa pagproseso ng datos"
+
+#. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__database_name
 msgid "Database"
 msgstr "Database"

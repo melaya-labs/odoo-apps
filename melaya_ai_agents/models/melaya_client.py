@@ -369,6 +369,12 @@ class MelayaClient(models.AbstractModel):
             return
         stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
         text = "%s %s HTTP %s %s" % (stamp, endpoint, status or "-", code or "")
+        from odoo.modules import module as odoo_module
+        if odoo_module.current_test:
+            # Under the test runner a separate cursor would COMMIT a simulated
+            # failure into the real database (it then showed in Diagnostics).
+            self._param_set(P_LAST_ERROR, text.strip())
+            return
         try:
             with self.env.registry.cursor() as cr:
                 env = api.Environment(cr, SUPERUSER_ID, {})

@@ -17,7 +17,7 @@
                     <field name="agent_login"/>
                     <field name="group_ids" widget="many2many_tags" options="{'no_create': True}"/>
                 </group>
-                <div class="alert alert-info" role="note" invisible="state != 'draft'">
+                <div class="alert alert-info" role="status" invisible="state != 'draft'">
                     <p class="fw-bold mb-1">What Odoo sends to Melaya (api.melaya.org, over HTTPS)</p>
                     <p class="mb-1">Now: the database name, its URL and Odoo version, the Melaya Agent login and its API key, the groups above, and your login and name.</p>
                     <p class="mb-0">Later, on each call: the model name, the record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads records as the Melaya Agent user.</p>
@@ -26,7 +26,7 @@
                     <field name="consent"/>
                 </group>
                 <div invisible="state != 'waiting'">
-                    <div class="alert alert-warning text-center" role="note" invisible="not confirm_code">
+                    <div class="alert alert-warning text-center" role="status" invisible="not confirm_code">
                         <div>Check that Melaya shows the same code before you approve:</div>
                         <div class="fs-2 fw-bold font-monospace mt-1"><field name="confirm_code" readonly="1"/></div>
                     </div>

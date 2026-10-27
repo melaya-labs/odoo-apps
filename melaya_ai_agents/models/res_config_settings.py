@@ -122,6 +122,22 @@ class ResConfigSettings(models.TransientModel):
     # ------------------------------------------------------------------
     def action_melaya_connect(self):
         self.env["melaya.client"]._check_admin()
+        # A request this admin started and closed before Odoo collected the
+        # connection (the dialog was dismissed, the tab closed) is reopened, so
+        # "Check connection" can finish it. Otherwise the approved install would
+        # sit unused in Melaya until its 30-minute cleanup.
+        waiting = self.env["melaya.connect.wizard"].search(
+            [("state", "=", "waiting"), ("create_uid", "=", self.env.uid)], order="id desc", limit=1,
+        )
+        if waiting:
+            return {
+                "type": "ir.actions.act_window",
+                "name": self.env._("Connect to Melaya"),
+                "res_model": "melaya.connect.wizard",
+                "res_id": waiting.id,
+                "view_mode": "form",
+                "target": "new",
+            }
         self._melaya_store_agent_groups()
         groups = allowed_agent_groups(self.env, self.melaya_agent_group_ids)
         return {

@@ -20,7 +20,7 @@
                             <div class="mt8" invisible="not melaya_connected">
                                 <field name="melaya_project_name" readonly="1"/>
                                 <div>
-                                    <field name="melaya_project_url" widget="url" text="Open the project in Melaya" readonly="1"/>
+                                    <field name="melaya_project_url" widget="url" text="Open the project in Melaya" readonly="1" class="w-auto text-nowrap"/>
                                 </div>
                                 <div class="mt8">
                                     <button name="action_melaya_rotate_token" type="object" string="Rotate token" class="btn-secondary me-2" confirm="Replace the Melaya token now? The old token stops working in 10 minutes."/>
@@ -66,7 +66,6 @@
         <field name="name">Settings</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="target">inline</field>
         <field name="context">{'module': 'melaya_ai_agents', 'bin_size': False}</field>
     </record>
 </odoo>

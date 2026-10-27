@@ -48,7 +48,7 @@ internal user: on Odoo plans billed per user it counts as one paid user.
     },
     # Add static/description/main_screenshot.png (first) and the other real
     # screenshots here once captured on a running Odoo 20 (see README).
-    "images": ["static/description/icon.png"],
+    "images": ["static/description/main_screenshot.png"],
     "uninstall_hook": "uninstall_hook",
     "installable": True,
     "application": True,

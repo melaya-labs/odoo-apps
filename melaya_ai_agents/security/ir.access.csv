@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_melaya_exposed_model_manager,melaya.exposed.model manager,melaya.exposed.model,melaya_ai_agents.group_melaya_manager,r,
+access_melaya_exposed_model_system,melaya.exposed.model admin,melaya.exposed.model,base.group_system,crud,
+access_melaya_connect_wizard_system,melaya.connect.wizard admin,melaya.connect.wizard,base.group_system,crud,
+access_melaya_diagnostics_system,melaya.diagnostics admin,melaya.diagnostics,base.group_system,crud,
+access_melaya_user_link_system,melaya.user.link admin,melaya.user.link,base.group_system,r,

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_melaya_root"
+              name="Melaya"
+              web_icon="melaya_ai_agents,static/description/icon.png"
+              groups="melaya_ai_agents.group_melaya_manager,base.group_system"
+              sequence="90"/>
+
+    <menuitem id="menu_melaya_exposed_models"
+              name="Exposed models"
+              parent="menu_melaya_root"
+              action="action_melaya_exposed_model"
+              sequence="10"/>
+
+    <menuitem id="menu_melaya_diagnostics"
+              name="Diagnostics"
+              parent="menu_melaya_root"
+              action="action_melaya_diagnostics"
+              groups="base.group_system"
+              sequence="20"/>
+
+    <menuitem id="menu_melaya_settings"
+              name="Settings"
+              parent="menu_melaya_root"
+              action="action_melaya_config_settings"
+              groups="base.group_system"
+              sequence="30"/>
+</odoo>

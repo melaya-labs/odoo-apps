@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.melaya_ai_agents</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Melaya" string="Melaya" name="melaya_ai_agents" logo="/melaya_ai_agents/static/description/icon.png" groups="base.group_system">
+                    <block title="Connection" name="melaya_connection">
+                        <setting id="melaya_connection_setting" string="Melaya project" help="Connect this database to one Melaya project. Melaya / User members then get a Melaya action on the records you expose.">
+                            <field name="melaya_connected" invisible="1"/>
+                            <field name="melaya_database_copy" invisible="1"/>
+                            <div class="mt8" invisible="melaya_connected">
+                                <div class="alert alert-warning mb-2" role="alert" invisible="not melaya_database_copy">This database is a copy of the one connected to Melaya. Connect it again from Settings &gt; Melaya.</div>
+                                <div class="text-muted">Not connected.</div>
+                                <button name="action_melaya_connect" type="object" string="Connect to Melaya" class="btn-primary mt8"/>
+                            </div>
+                            <div class="mt8" invisible="not melaya_connected">
+                                <field name="melaya_project_name" readonly="1"/>
+                                <div>
+                                    <field name="melaya_project_url" widget="url" text="Open the project in Melaya" readonly="1"/>
+                                </div>
+                                <div class="mt8">
+                                    <button name="action_melaya_rotate_token" type="object" string="Rotate token" class="btn-secondary me-2" confirm="Replace the Melaya token now? The old token stops working in 10 minutes."/>
+                                    <button name="action_melaya_diagnostics" type="object" string="Diagnostics" class="btn-secondary me-2"/>
+                                    <button name="action_melaya_disconnect" type="object" string="Disconnect" class="btn-danger" confirm="Disconnect this database from Melaya? Linked users leave the project and the Melaya Agent API key is deleted. Your Melaya project, pipelines and runs are kept."/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="melaya_agent_groups_setting" string="Melaya Agent groups" help="Groups of the Odoo user Melaya works as. Pick only the apps Melaya needs. Administrator groups are never allowed.">
+                            <field name="melaya_agent_group_ids" widget="many2many_tags" readonly="melaya_connected" options="{'no_create': True}"/>
+                            <div class="text-muted mt4" invisible="not melaya_connected">To change them, edit the Melaya Agent user in Settings, Users.</div>
+                        </setting>
+                        <setting id="melaya_auto_join_setting" invisible="not melaya_connected" help="Melaya / User members who link their Melaya account join the project as Runner if the project owner's plan has a free seat. The project owner can change roles in Melaya.">
+                            <field name="melaya_auto_join"/>
+                        </setting>
+                        <setting id="melaya_exposed_setting" string="Exposed models" invisible="not melaya_connected" help="Choose the kinds of records that show the Melaya action, the pipelines each one can run and, if you want, which Odoo groups can use it.">
+                            <field name="melaya_exposed_count" readonly="1"/>
+                            <div class="mt8">
+                                <button name="action_melaya_exposed_models" type="object" string="Manage exposed models" class="btn-link"/>
+                            </div>
+                        </setting>
+                        <setting id="melaya_api_url_setting" groups="base.group_no_one" help="Change it only when Melaya support asks you to.">
+                            <field name="melaya_api_url"/>
+                        </setting>
+                    </block>
+                    <block title="What Odoo sends to Melaya" name="melaya_privacy">
+                        <setting id="melaya_privacy_setting" help="Calls go to api.melaya.org over HTTPS.">
+                            <div class="text-muted">Model name, record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads the record through the Melaya Agent user. Changes Melaya makes in Odoo need an approval in Melaya.</div>
+                            <div class="mt8">
+                                <a href="https://melaya.org/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+                            </div>
+                            <div>
+                                <a href="https://melaya.org/dpa" target="_blank" rel="noopener noreferrer">Data processing agreement</a>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_melaya_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'melaya_ai_agents', 'bin_size': False}</field>
+    </record>
+</odoo>

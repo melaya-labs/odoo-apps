@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_melaya" model="ir.module.category">
+        <field name="name">Melaya</field>
+        <field name="sequence">60</field>
+    </record>
+
+    <record id="res_groups_privilege_melaya" model="res.groups.privilege">
+        <field name="name">Melaya</field>
+        <field name="sequence">60</field>
+        <field name="category_id" ref="module_category_melaya"/>
+    </record>
+
+    <record id="group_melaya_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_melaya"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Sees the Melaya action on exposed records: ask Melaya, run pipelines, follow runs.</field>
+    </record>
+
+    <record id="group_melaya_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_melaya"/>
+        <field name="implied_ids" eval="[(4, ref('group_melaya_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <field name="comment">Sees the Melaya menu and the exposed models. Joins the Melaya project as Runner, like every Odoo user; the project owner can change roles in Melaya.</field>
+    </record>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="melaya_exposed_model_view_list" model="ir.ui.view">
+        <field name="name">melaya.exposed.model.list</field>
+        <field name="model">melaya.exposed.model</field>
+        <field name="arch" type="xml">
+            <list string="Exposed models">
+                <header>
+                    <button name="action_sync_from_melaya" type="object" string="Sync from Melaya" display="always" groups="base.group_system"/>
+                    <button name="action_save_to_melaya" type="object" string="Save to Melaya" display="always" class="btn-primary" groups="base.group_system"/>
+                </header>
+                <field name="model_id"/>
+                <field name="model"/>
+                <field name="pipeline_names"/>
+                <field name="group_ids" widget="many2many_tags" optional="show"/>
+                <field name="button_active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="melaya_exposed_model_view_form" model="ir.ui.view">
+        <field name="name">melaya.exposed.model.form</field>
+        <field name="model">melaya.exposed.model</field>
+        <field name="arch" type="xml">
+            <form string="Exposed model">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="model"/>
+                            <field name="button_active"/>
+                            <field name="group_ids" widget="many2many_tags" options="{'no_create': True}" placeholder="Every Melaya / User member"/>
+                        </group>
+                        <group>
+                            <field name="action_id" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="pipeline_names" placeholder="One pipeline name per line"/>
+                        <field name="available_pipelines" readonly="1"/>
+                    </group>
+                    <div class="text-muted">Changes stay in Odoo until you click Save to Melaya in the list.</div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_melaya_exposed_model" model="ir.actions.act_window">
+        <field name="name">Exposed models</field>
+        <field name="res_model">melaya.exposed.model</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Choose where the Melaya action appears</p>
+            <p>Add a model, list the Melaya pipelines it can run, then click Save to Melaya.</p>
+        </field>
+    </record>
+</odoo>

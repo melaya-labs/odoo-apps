@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="melaya_connect_wizard_view_form" model="ir.ui.view">
+        <field name="name">melaya.connect.wizard.form</field>
+        <field name="model">melaya.connect.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Connect to Melaya">
+                <field name="state" invisible="1"/>
+                <div invisible="state != 'draft'">
+                    <p>Odoo creates a dedicated internal user, Melaya Agent, and an API key for it. Melaya reads and writes Odoo as this user only, with the groups below. It is never an administrator.</p>
+                    <p>The Melaya Agent is shared by everyone in the Melaya project: its groups are the most Melaya can read for any of them, so pick only what your pipelines need. On Odoo plans billed per user, it counts as one paid internal user.</p>
+                    <p>Next, you sign in to Melaya and approve the connection. Melaya creates a project for this database or uses one of your projects. Odoo users who link their Melaya account join the project as Runner.</p>
+                </div>
+                <group invisible="state != 'draft'">
+                    <field name="database_name"/>
+                    <field name="base_url"/>
+                    <field name="agent_login"/>
+                    <field name="group_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+                <div class="alert alert-info" role="note" invisible="state != 'draft'">
+                    <p class="fw-bold mb-1">What Odoo sends to Melaya (api.melaya.org, over HTTPS)</p>
+                    <p class="mb-1">Now: the database name, its URL and Odoo version, the Melaya Agent login and its API key, the groups above, and your login and name.</p>
+                    <p class="mb-0">Later, on each call: the model name, the record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads records as the Melaya Agent user.</p>
+                </div>
+                <group invisible="state != 'draft'">
+                    <field name="consent"/>
+                </group>
+                <div invisible="state != 'waiting'">
+                    <div class="alert alert-warning text-center" role="note" invisible="not confirm_code">
+                        <div>Check that Melaya shows the same code before you approve:</div>
+                        <div class="fs-2 fw-bold font-monospace mt-1"><field name="confirm_code" readonly="1"/></div>
+                    </div>
+                    <p>Open the approval page, sign in to Melaya and approve the connection. Then come back and click Check connection.</p>
+                    <field name="approve_url" widget="url" text="Open the approval page" readonly="1"/>
+                </div>
+                <div invisible="not message">
+                    <field name="message" readonly="1"/>
+                </div>
+                <footer>
+                    <button name="action_start" type="object" string="Start connection" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_open_approval" type="object" string="Open Melaya to approve" class="btn-primary" invisible="state != 'waiting'"/>
+                    <button name="action_check" type="object" string="Check connection" class="btn-secondary" invisible="state != 'waiting'"/>
+                    <button name="action_done" type="object" string="Close" class="btn-primary" invisible="state not in ('done', 'failed')"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary" invisible="state in ('done', 'failed')"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

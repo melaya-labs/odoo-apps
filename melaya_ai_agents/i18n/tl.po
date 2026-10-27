@@ -1,0 +1,1260 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* melaya_ai_agents
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 00:00+0000\n"
+"PO-Revision-Date: 2026-10-26 00:00+0000\n"
+"Last-Translator: Melaya\n"
+"Language-Team: \n"
+"Language: tl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: melaya_ai_agents
+#: model:ir.module.module,description:base.module_melaya_ai_agents
+msgid ""
+"\n"
+"Connect this Odoo database to a Melaya project. Users in the Melaya / User\n"
+"group get a Melaya action on the records the administrator exposes: ask the\n"
+"Melaya Assistant about the record, run a Melaya pipeline with a short brief,\n"
+"and follow the run status. Changes Melaya makes in Odoo need an approval in\n"
+"Melaya. A free Melaya account is required.\n"
+"\n"
+"Data sent to Melaya (api.melaya.org, over HTTPS):\n"
+"when an administrator connects, the database name, URL and Odoo version, the\n"
+"login and API key of the Melaya Agent user the module creates, its groups,\n"
+"and the administrator's login and name; on each call, the model name, the\n"
+"record id, the Odoo user id (login and name once the user links a Melaya\n"
+"account) and the brief the user types. Never the record content: Melaya\n"
+"reads records as the Melaya Agent user, with the groups the administrator\n"
+"picked.\n"
+msgstr ""
+"\n"
+"Ikonekta ang Odoo database na ito sa isang proyekto ng Melaya. Nakakakuha ng\n"
+"aksyong Melaya ang mga gumagamit sa grupong Melaya / Gumagamit sa mga rekord na\n"
+"inilalantad ng admin: magtanong sa Melaya Assistant tungkol sa rekord,\n"
+"patakbuhin ang isang daloy ng proseso ng Melaya gamit ang maikling brief, at\n"
+"subaybayan ang katayuan ng takbo. Kailangan ng pag-apruba sa Melaya ang mga\n"
+"pagbabagong ginagawa ng Melaya sa Odoo. Kailangan ng libreng account sa Melaya.\n"
+"\n"
+"Mga datos na ipinapadala sa Melaya (api.melaya.org, sa pamamagitan ng HTTPS):\n"
+"kapag kumonekta ang isang admin, ang pangalan ng database, URL, at bersyon ng\n"
+"Odoo, ang login at API key ng gumagamit na Melaya Agent na nililikha ng\n"
+"module, ang mga grupo nito, at ang login at pangalan ng admin; sa bawat\n"
+"tawag, ang pangalan ng modelo, ang id ng rekord, ang Odoo user id (login at\n"
+"pangalan kapag naka-link na ang gumagamit sa isang Melaya account) at ang\n"
+"brief na ini-type ng gumagamit. Hindi kailanman ang nilalaman ng rekord:\n"
+"binabasa ng Melaya ang mga rekord bilang gumagamit na Melaya Agent, gamit ang\n"
+"mga grupong pinili ng admin.\n"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_diagnostics.py:0
+msgid "%(seconds)s seconds"
+msgstr "%(seconds)s segundo"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_diagnostics.py:0
+msgid "%(seconds)s seconds (about %(minutes)s minutes): fix this server's time"
+msgstr "%(seconds)s segundo (mga %(minutes)s minuto): ayusin ang oras ng server na ito"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "A model can expose at most %(count)s pipelines."
+msgstr "Isang modelo lang ang puwedeng maglantad ng hanggang %(count)s na daloy ng proseso."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
+msgid "Add a model, list the Melaya pipelines it can run, then click Save to Melaya."
+msgstr "Magdagdag ng modelo, ilista ang mga daloy ng proseso ng Melaya na puwede nitong patakbuhin, pagkatapos ay i-click ang I-save sa Melaya."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__button_active
+msgid "Adds a Melaya entry to the Actions menu of this model's form view for Melaya / User members."
+msgstr "Nagdaragdag ng opsyong Melaya sa menu ng Mga Aksyon ng form view ng modelong ito, para sa mga miyembro ng Melaya / Gumagamit."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__group_ids
+msgid "Allowed groups"
+msgstr "Mga Pinapayagang Grupo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Approval needed"
+msgstr "Kailangan ng Pag-apruba"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__approve_url
+msgid "Approval page"
+msgstr "Pahina ng Pag-apruba"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Ask Melaya"
+msgstr "Tanungin ang Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.module.module,summary:base.module_melaya_ai_agents
+msgid "Ask Melaya about a record and run your Melaya pipelines from Odoo"
+msgstr "Magtanong sa Melaya tungkol sa isang rekord at patakbuhin ang iyong mga daloy ng proseso ng Melaya mula sa Odoo"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+msgid "Ask your administrator to add you to the Melaya / User group."
+msgstr "Hilingin sa iyong admin na idagdag ka sa grupong Melaya / Gumagamit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "At most %(count)s models can be exposed to Melaya."
+msgstr "Hanggang %(count)s na modelo lang ang puwedeng ilantad sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Brief (optional)"
+msgstr "Brief (opsyonal)"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Calls go to api.melaya.org over HTTPS."
+msgstr "Napupunta ang mga tawag sa api.melaya.org sa pamamagitan ng HTTPS."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Cancel"
+msgstr "Kanselahin"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Cancelled"
+msgstr "Kinansela"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_res_config_settings__melaya_api_url
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Change it only when Melaya support asks you to."
+msgstr "Baguhin lang ito kapag hiniling ito ng suporta ng Melaya."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+msgid "Changes stay in Odoo until you click Save to Melaya in the list."
+msgstr "Mananatili sa Odoo ang mga pagbabago hangga't hindi mo pinipindot ang I-save sa Melaya sa listahan."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Check connection"
+msgstr "Suriin ang koneksyon"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Check that Melaya shows the same code before you approve:"
+msgstr "Tiyakin na ipinapakita ng Melaya ang parehong kodigo bago ka umapruba:"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Choose the kinds of records that show the Melaya action, the pipelines each one can run and, if you want, which Odoo groups can use it."
+msgstr "Piliin ang mga uri ng rekord na nagpapakita ng aksyong Melaya, ang mga daloy ng proseso na puwedeng patakbuhin ng bawat isa, at, kung gusto mo, kung aling mga grupo ng Odoo ang puwedeng gumamit nito."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
+msgid "Choose where the Melaya action appears"
+msgstr "Piliin kung saan lalabas ang aksyong Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__clock_offset
+msgid "Clock difference with Melaya"
+msgstr "Pagkakaiba ng Oras sa Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_diagnostics_view_form
+msgid "Close"
+msgstr "Isara"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Completed"
+msgstr "Natapos"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__confirm_code
+msgid "Confirmation code"
+msgstr "Kodigo ng Kumpirmasyon"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_connect_wizard
+msgid "Connect Odoo to Melaya"
+msgstr "Ikonekta ang Odoo sa Melaya"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Connect this database to one Melaya project. Melaya / User members then get a Melaya action on the records you expose."
+msgstr "Ikonekta ang database na ito sa isang proyekto ng Melaya. Makakakuha ng aksyong Melaya ang mga miyembro ng Melaya / Gumagamit sa mga rekord na inilalantad mo."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/res_config_settings.py:0
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Connect to Melaya"
+msgstr "Kumonekta sa Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_connect_wizard__state__done
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__connected
+msgid "Connected"
+msgstr "Nakakonekta"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_connected
+msgid "Connected to Melaya"
+msgstr "Nakakonekta sa Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Connected to the Melaya project %(project)s."
+msgstr "Nakakonekta sa proyekto ng Melaya na %(project)s."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Connection"
+msgstr "Koneksyon"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__connect_id
+msgid "Connection request"
+msgstr "Kahilingan sa Koneksyon"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_database_copy
+msgid "Copy of a connected database"
+msgstr "Kopya ng Nakakonektang Database"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__create_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__create_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__create_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__create_uid
+msgid "Created by"
+msgstr "Nilikha Ni"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__agent_user_created
+msgid "Created by this wizard"
+msgstr "Nilikha ng wizard na ito"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__create_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__create_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__create_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__create_date
+msgid "Created on"
+msgstr "Nilikha Noong"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Data processing agreement"
+msgstr "Kasunduan sa Pagproseso ng Datos"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__database_name
+msgid "Database"
+msgstr "Database"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__database_uuid
+msgid "Database UUID"
+msgstr "UUID ng Database"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__token_database_uuid
+msgid "Database UUID of the connection"
+msgstr "UUID ng Database ng Koneksyon"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+#: model:ir.ui.menu,name:melaya_ai_agents.menu_melaya_diagnostics
+msgid "Diagnostics"
+msgstr "Diagnostiko"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Disconnect"
+msgstr "Idiskonekta"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Disconnect this database from Melaya? Linked users leave the project and the Melaya Agent API key is deleted. Your Melaya project, pipelines and runs are kept."
+msgstr "Idiskonekta ang database na ito mula sa Melaya? Aalis sa proyekto ang mga naka-link na gumagamit at mabubura ang API key ng Melaya Agent. Mananatili ang iyong proyekto, mga daloy ng proseso, at mga takbo sa Melaya."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__display_name
+msgid "Display Name"
+msgstr "Ipinapakitang Pangalan"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+msgid "Every Melaya / User member"
+msgstr "Bawat Miyembro ng Melaya / Gumagamit"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Expired"
+msgstr "Nag-expire"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+msgid "Exposed model"
+msgstr "Inilantad na Modelo"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_exposed_count
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_list
+#: model:ir.actions.act_window,name:melaya_ai_agents.action_melaya_exposed_model
+#: model:ir.ui.menu,name:melaya_ai_agents.menu_melaya_exposed_models
+msgid "Exposed models"
+msgstr "Mga Inilantad na Modelo"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "Exposed models and pipelines are now the same as in Melaya."
+msgstr "Magkatugma na ngayon ang mga inilantad na modelo at daloy ng proseso sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "Exposed models and pipelines saved to Melaya."
+msgstr "Na-save sa Melaya ang mga inilantad na modelo at daloy ng proseso."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "Exposed models updated. These models are not installed in this database and were skipped: %(models)s"
+msgstr "Na-update ang mga inilantad na modelo. Hindi naka-install sa database na ito ang mga sumusunod na modelo kaya nilaktawan ang mga ito: %(models)s"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Failed"
+msgstr "Nabigo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Finish linking in the Melaya tab, then click I have linked my account."
+msgstr "Tapusin ang pag-link sa tab na Melaya, pagkatapos ay i-click ang Na-link ko na ang aking account."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Groups of the Odoo user Melaya works as. Pick only the apps Melaya needs. Administrator groups are never allowed."
+msgstr "Mga grupo ng gumagamit ng Odoo na kinakatawan ng Melaya. Pumili lang ng mga app na kailangan ng Melaya. Hindi kailanman pinapayagan ang mga grupong admin."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__consent
+msgid "I agree to send this data to Melaya"
+msgstr "Sumasang-ayon akong ipadala ang datos na ito sa Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "I have linked my account"
+msgstr "Na-link ko na ang aking account"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__id
+msgid "ID"
+msgstr "ID"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Keep the link"
+msgstr "Panatilihin ang Link"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__last_seen_at
+msgid "Last call seen by Melaya"
+msgstr "Huling Tawag na Nakita ng Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__server_last_error
+msgid "Last error seen by Melaya"
+msgstr "Huling Error na Nakita ng Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__local_last_error
+msgid "Last error seen by Odoo"
+msgstr "Huling Error na Nakita ng Odoo"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__write_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__write_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__write_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__write_uid
+msgid "Last Updated by"
+msgstr "Huling Na-update Ni"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__write_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__write_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__write_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__write_date
+msgid "Last Updated on"
+msgstr "Huling Na-update Noong"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Later, on each call: the model name, the record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads records as the Melaya Agent user."
+msgstr "Pagkatapos, sa bawat tawag: ang pangalan ng modelo, ang id ng rekord, ang Odoo user id (login at pangalan kapag naka-link na ang gumagamit sa isang Melaya account) at ang brief na ini-type ng gumagamit. Hindi kailanman ang nilalaman ng rekord: binabasa ng Melaya ang mga rekord bilang gumagamit na Melaya Agent."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__group_ids
+msgid "Leave empty for every Melaya / User member. When set, only members of these groups see the Melaya action and can use Melaya on this kind of record."
+msgstr "Iwanang blangko para sa bawat miyembro ng Melaya / Gumagamit. Kapag may nakatakda, makikita lang ng mga miyembro ng mga grupong ito ang aksyong Melaya at puwede nilang gamitin ang Melaya sa ganitong uri ng rekord."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_auto_join
+msgid "Let Odoo users join automatically"
+msgstr "Hayaang Awtomatikong Sumali ang mga Gumagamit ng Odoo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Link your Melaya account"
+msgstr "I-link ang iyong Melaya account"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Link your Melaya account first."
+msgstr "I-link muna ang iyong Melaya account."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Link your Melaya account once to ask Melaya about records and run the team's pipelines. A free Melaya account is enough to start."
+msgstr "I-link ang iyong Melaya account nang isang beses para magtanong sa Melaya tungkol sa mga rekord at patakbuhin ang mga daloy ng proseso ng pangkat. Sapat na ang libreng Melaya account para makapagsimula."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Linking sends your Odoo login and name to Melaya."
+msgstr "Ipinapadala ng pag-link ang iyong Odoo login at pangalan sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Loading..."
+msgstr "Naglo-load..."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Manage exposed models"
+msgstr "Pamahalaan ang mga inilantad na modelo"
+
+#. module: melaya_ai_agents
+#: model:res.groups,name:melaya_ai_agents.group_melaya_manager
+msgid "Manager"
+msgstr "Tagapamahala"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+#: model:ir.module.category,name:melaya_ai_agents.module_category_melaya
+#: model:res.groups.privilege,name:melaya_ai_agents.res_groups_privilege_melaya
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_diagnostics_view_form
+#: model:ir.ui.menu,name:melaya_ai_agents.menu_melaya_root
+msgid "Melaya"
+msgstr "Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_res_config_settings__melaya_auto_join
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Melaya / User members who link their Melaya account join the project as Runner if the project owner's plan has a free seat. The project owner can change roles in Melaya."
+msgstr "Sumasali sa proyekto bilang Runner ang mga miyembro ng Melaya / Gumagamit na nag-link ng kanilang Melaya account, kung may libreng upuan ang plano ng may-ari ng proyekto. Puwedeng baguhin ng may-ari ng proyekto ang mga role sa Melaya."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__action_id
+msgid "Melaya action"
+msgstr "Aksyong Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_agent_group_ids
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__group_ids
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Melaya Agent groups"
+msgstr "Mga Grupo ng Melaya Agent"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__agent_login
+msgid "Melaya Agent login"
+msgstr "Login ng Melaya Agent"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__agent_user_id
+msgid "Melaya Agent user"
+msgstr "Gumagamit na Melaya Agent"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_client
+msgid "Melaya API client"
+msgstr "Kliyente ng Melaya API"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_api_url
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__api_url
+msgid "Melaya API URL"
+msgstr "URL ng Melaya API"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Melaya approved the connection but this Odoo did not receive it in time. Disconnect the database in Melaya (project > Connectors > Odoo) and connect again."
+msgstr "In-apruba ng Melaya ang koneksyon, pero hindi ito natanggap ng Odoo na ito sa tamang oras. Idiskonekta ang database sa Melaya (proyekto > Mga Koneksyon > Odoo) at kumonekta ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya can only connect to a public https Odoo address."
+msgstr "Puwede lang kumonekta ang Melaya sa isang pampublikong https address ng Odoo."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "Melaya cannot be enabled on the model %(model)s."
+msgstr "Hindi puwedeng paganahin ang Melaya sa modelong %(model)s."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya could not be reached. Check that this Odoo server can open %(url)s."
+msgstr "Hindi maabot ang Melaya. Siguraduhing kaya buksan ng Odoo server na ito ang %(url)s."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya could not find what this request refers to."
+msgstr "Hindi nahanap ng Melaya kung ano ang tinutukoy ng kahilingang ito."
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_diagnostics
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_diagnostics_view_form
+#: model:ir.actions.act_window,name:melaya_ai_agents.action_melaya_diagnostics
+msgid "Melaya diagnostics"
+msgstr "Diagnostiko ng Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya did not answer in time. Try again in a moment."
+msgstr "Hindi sumagot ang Melaya sa tamang oras. Subukan ulit sa ilang sandali."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "Melaya did not confirm the run. Check the project in Melaya."
+msgstr "Hindi kinumpirma ng Melaya ang takbo. Suriin ang proyekto sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "Melaya did not return a link page. Try again."
+msgstr "Walang ibinalik na pahina ng pag-link ang Melaya. Subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "Melaya did not return an Ask Melaya link. Try again."
+msgstr "Walang ibinalik na link ang Melaya para sa Tanungin ang Melaya. Subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya did not return a new token. Nothing was changed."
+msgstr "Walang ibinalik na bagong token ang Melaya. Walang nabago."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya had a problem with this request. Try again in a moment."
+msgstr "May naging problema ang Melaya sa kahilingang ito. Subukan ulit sa ilang sandali."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+msgid "Melaya is not available on this kind of record."
+msgstr "Hindi available ang Melaya sa ganitong uri ng rekord."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+msgid "Melaya is not available to you on this kind of record. Ask your administrator."
+msgstr "Hindi available sa iyo ang Melaya sa ganitong uri ng rekord. Magtanong sa iyong admin."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "Melaya is starting the run. It will appear here in a moment."
+msgstr "Sinisimulan ng Melaya ang takbo. Lalabas ito rito sa ilang sandali."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya is taking longer than usual to start the run. Check Melaya in a minute."
+msgstr "Mas matagal kaysa karaniwan ang pagsisimula ng takbo sa Melaya. Suriin ang Melaya sa loob ng isang minuto."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya is unavailable right now. Try again in a minute."
+msgstr "Hindi available ang Melaya sa ngayon. Subukan ulit sa loob ng isang minuto."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_project_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__project
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Melaya project"
+msgstr "Proyekto ng Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_melaya_connect_wizard__group_ids
+msgid "Melaya reads and writes Odoo as the Melaya Agent user, with these groups only."
+msgstr "Binabasa at sinusulat ng Melaya ang Odoo bilang gumagamit na Melaya Agent, gamit lang ang mga grupong ito."
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_record_panel
+msgid "Melaya record panel"
+msgstr "Panel ng Rekord ng Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya refused a repeated request. Try again."
+msgstr "Tinanggihan ng Melaya ang paulit-ulit na kahilingan. Subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya refused an empty member list. Nothing was changed."
+msgstr "Tinanggihan ng Melaya ang blangkong listahan ng mga miyembro. Walang nabago."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya refused the data sent by Odoo (%(code)s). Update this module, or contact Melaya support."
+msgstr "Tinanggihan ng Melaya ang datos na ipinadala ng Odoo (%(code)s). I-update ang module na ito, o makipag-ugnayan sa suporta ng Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya refused the request (HTTP %(status)s)."
+msgstr "Tinanggihan ng Melaya ang kahilingan (HTTP %(status)s)."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Melaya refused the request. The connection may have been revoked, or this server's clock is wrong. An administrator can check Settings > Melaya > Diagnostics."
+msgstr "Tinanggihan ng Melaya ang kahilingan. Maaaring na-revoke ang koneksyon, o mali ang orasan ng server na ito. Puwedeng suriin ito ng admin sa Mga Setting > Melaya > Diagnostiko."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Melaya returned an answer this version of the module cannot read. Nothing was changed."
+msgstr "Nagbalik ang Melaya ng sagot na hindi mabasa ng bersyong ito ng module. Walang nabago."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_exposed_model.py:0
+msgid "Melaya returned settings this version of the module cannot read."
+msgstr "Nagbalik ang Melaya ng mga setting na hindi mabasa ng bersyong ito ng module."
+
+#. module: melaya_ai_agents
+#: model:ir.actions.server,name:melaya_ai_agents.ir_cron_melaya_members_sync_ir_actions_server
+msgid "Melaya: sync project members"
+msgstr "Melaya: i-sync ang mga miyembro ng proyekto"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__message
+msgid "Message"
+msgstr "Mensahe"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Model name, record id, the Odoo user id (login and name once the user links a Melaya account) and the brief the user types. Never the record content: Melaya reads the record through the Melaya Agent user. Changes Melaya makes in Odoo need an approval in Melaya."
+msgstr "Pangalan ng modelo, id ng rekord, ang Odoo user id (login at pangalan kapag naka-link na ang gumagamit sa isang Melaya account) at ang brief na ini-type ng gumagamit. Hindi kailanman ang nilalaman ng rekord: binabasa ng Melaya ang rekord sa pamamagitan ng gumagamit na Melaya Agent. Kailangan ng pag-apruba sa Melaya ang mga pagbabagong ginagawa ng Melaya sa Odoo."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/res_config_settings.py:0
+msgid "New Melaya token saved. The old one stops working in 10 minutes."
+msgstr "Na-save ang bagong token ng Melaya. Titigil gumana ang luma sa loob ng 10 minuto."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Next, you sign in to Melaya and approve the connection. Melaya creates a project for this database or uses one of your projects. Odoo users who link their Melaya account join the project as Runner."
+msgstr "Susunod, mag-sign in ka sa Melaya at aprubahan ang koneksyon. Gagawa ang Melaya ng proyekto para sa database na ito, o gagamit ng isa sa mga proyekto mo. Sumasali sa proyekto bilang Runner ang mga gumagamit ng Odoo na nag-link ng kanilang Melaya account."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "No pipeline is available for this kind of record. Ask your administrator to expose one."
+msgstr "Walang available na daloy ng proseso para sa ganitong uri ng rekord. Hilingin sa iyong admin na maglantad ng isa."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "No runs on this record yet."
+msgstr "Wala pang takbo sa rekord na ito."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_connect_wizard__state__failed
+msgid "Not connected"
+msgstr "Hindi Nakakonekta"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Not connected."
+msgstr "Hindi nakakonekta."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Now: the database name, its URL and Odoo version, the Melaya Agent login and its API key, the groups above, and your login and name."
+msgstr "Ngayon: ang pangalan ng database, ang URL nito at ang bersyon ng Odoo, ang login ng Melaya Agent at ang API key nito, ang mga grupo sa itaas, at ang iyong login at pangalan."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_diagnostics_view_form
+msgid "Odoo"
+msgstr "Odoo"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Odoo creates a dedicated internal user, Melaya Agent, and an API key for it. Melaya reads and writes Odoo as this user only, with the groups below. It is never an administrator."
+msgstr "Gumagawa ang Odoo ng nakalaang panloob na gumagamit, ang Melaya Agent, at isang API key para dito. Binabasa at sinusulat ng Melaya ang Odoo bilang gumagamit na ito lang, gamit ang mga grupo sa ibaba. Hindi ito kailanman naging admin."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "The Melaya Agent is shared by everyone in the Melaya project: its groups are the most Melaya can read for any of them, so pick only what your pipelines need. On Odoo plans billed per user, it counts as one paid internal user."
+msgstr "Ibinabahagi ng lahat ng miyembro ng proyekto ng Melaya ang Melaya Agent: ang mga grupo nito ang pinakamarami na puwedeng basahin ni Melaya para sa sinuman sa kanila, kaya piliin mo lang ang kailangan ng iyong mga daloy ng proseso. Sa mga planong Odoo na sinisingil kada user, ito ay binibilang bilang isang bayad na panloob na gumagamit."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_res_config_settings__melaya_agent_group_ids
+msgid "Odoo groups given to the Melaya Agent user when you connect. Melaya reads and writes Odoo with these rights only. Administrator groups are never allowed."
+msgstr "Mga grupo ng Odoo na ibinigay sa gumagamit na Melaya Agent kapag kumonekta ka. Binabasa at sinusulat ng Melaya ang Odoo gamit lang ang mga karapatang ito. Hindi kailanman pinapayagan ang mga grupong admin."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__model_id
+msgid "Odoo model"
+msgstr "Modelong Odoo"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_exposed_model
+msgid "Odoo model exposed to Melaya"
+msgstr "Modelong Odoo na Inilantad sa Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__base_url
+msgid "Odoo URL"
+msgstr "URL ng Odoo"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_user_link
+msgid "Odoo user linked to Melaya"
+msgstr "Gumagamit ng Odoo na Naka-link sa Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__odoo_version
+msgid "Odoo version"
+msgstr "Bersyon ng Odoo"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__pipeline_names
+msgid "One Melaya pipeline per line, by id or by name, as listed in Pipelines in the Melaya project. Users can run only these pipelines from this kind of record."
+msgstr "Isang daloy ng proseso ng Melaya kada linya, ayon sa id o pangalan, gaya ng nakalista sa Mga Daloy ng Proseso sa proyekto ng Melaya. Puwede lang patakbuhin ng mga gumagamit ang mga daloy ng prosesong ito mula sa ganitong uri ng rekord."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+msgid "One pipeline name per line"
+msgstr "Isang pangalan ng daloy ng proseso kada linya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Only Settings administrators can change the Melaya connection."
+msgstr "Tanging ang mga admin sa Mga Setting ang puwedeng magbago sa koneksyon ng Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+msgid "Open a record first."
+msgstr "Magbukas muna ng rekord."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Open in Melaya"
+msgstr "Buksan sa Melaya"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Open Melaya to approve"
+msgstr "Buksan ang Melaya para aprubahan"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Open the approval page"
+msgstr "Buksan ang pahina ng pag-apruba"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Open the approval page, sign in to Melaya and approve the connection. Then come back and click Check connection."
+msgstr "Buksan ang pahina ng pag-apruba, mag-sign in sa Melaya, at aprubahan ang koneksyon. Pagkatapos, bumalik at i-click ang Suriin ang koneksyon."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_res_config_settings__melaya_project_url
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Open the project in Melaya"
+msgstr "Buksan ang proyekto sa Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Opens the Melaya Assistant in a new tab with a question about this record. Nothing runs until you press Send."
+msgstr "Nagbubukas ito ng Melaya Assistant sa bagong tab na may tanong tungkol sa rekord na ito. Walang tatakbo hangga't hindi mo pinipindot ang Ipadala."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "Pick a pipeline."
+msgstr "Pumili ng daloy ng proseso."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Pick at least one group for the Melaya Agent user."
+msgstr "Pumili ng kahit isang grupo para sa gumagamit na Melaya Agent."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Pipeline"
+msgstr "Daloy ng Proseso"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__pipeline_names
+msgid "Pipelines"
+msgstr "Mga Daloy ng Proseso"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__available_pipelines
+msgid "Pipelines in the Melaya project"
+msgstr "Mga Daloy ng Proseso sa Proyekto ng Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__poll_secret
+msgid "Poll secret"
+msgstr "Lihim ng Pagsusuri"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Privacy policy"
+msgstr "Patakaran sa Pagkapribado"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__error
+msgid "Problem"
+msgstr "Problema"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__owner
+msgid "Project owner"
+msgstr "May-ari ng Proyekto"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Queued"
+msgstr "Naka-pila"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Recent runs"
+msgstr "Mga Kamakailang Takbo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Rejected"
+msgstr "Tinanggihan"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Replace the Melaya token now? The old token stops working in 10 minutes."
+msgstr "Palitan na ang token ng Melaya ngayon? Sa loob ng 10 minuto, titigil gumana ang lumang token."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_connect_wizard__state__draft
+msgid "Review"
+msgstr "Pagsusuri"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Rotate token"
+msgstr "Palitan ang token"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Run a Melaya pipeline"
+msgstr "Patakbuhin ang isang Daloy ng Proseso ng Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Run pipeline"
+msgstr "Patakbuhin ang Daloy ng Proseso"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Run started. Its status updates below while this window is open."
+msgstr "Nagsimula na ang takbo. Mag-a-update ang katayuan nito sa ibaba habang bukas ang window na ito."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Running"
+msgstr "Tumatakbo"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_list
+msgid "Save to Melaya"
+msgstr "I-save sa Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__seats
+msgid "Seats used"
+msgstr "Mga Upuang Nagamit"
+
+#. module: melaya_ai_agents
+#: model:res.groups,comment:melaya_ai_agents.group_melaya_user
+msgid "Sees the Melaya action on exposed records: ask Melaya, run pipelines, follow runs."
+msgstr "Nakikita ang aksyong Melaya sa mga inilantad na rekord: magtanong sa Melaya, patakbuhin ang mga daloy ng proseso, at subaybayan ang mga takbo."
+
+#. module: melaya_ai_agents
+#: model:res.groups,comment:melaya_ai_agents.group_melaya_manager
+msgid "Sees the Melaya menu and the exposed models. Joins the Melaya project as Runner, like every Odoo user; the project owner can change roles in Melaya."
+msgstr "Nakikita ang menu ng Melaya at ang mga inilantad na modelo. Sumasali sa proyekto ng Melaya bilang Runner, gaya ng bawat gumagamit ng Odoo; puwedeng baguhin ng may-ari ng proyekto ang mga role sa Melaya."
+
+#. module: melaya_ai_agents
+#: model:ir.actions.act_window,name:melaya_ai_agents.action_melaya_config_settings
+#: model:ir.ui.menu,name:melaya_ai_agents.menu_melaya_settings
+msgid "Settings"
+msgstr "Mga Setting"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__button_active
+msgid "Show the Melaya action"
+msgstr "Ipakita ang Aksyong Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Something went wrong. Try again."
+msgstr "May nagkamali. Subukan ulit."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "Start connection"
+msgstr "Simulan ang koneksyon"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Started"
+msgstr "Sinimulan"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Starting"
+msgstr "Nagsisimula"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Status updates stopped after 30 minutes. Close and open this window again to refresh."
+msgstr "Humintong mag-update ang katayuan pagkalipas ng 30 minuto. Isara at buksan ulit ang window na ito para mag-refresh."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__state
+msgid "Step"
+msgstr "Hakbang"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Still waiting. Approve the connection in Melaya, then click Check connection again."
+msgstr "Naghihintay pa rin. Aprubahan ang koneksyon sa Melaya, pagkatapos ay i-click ulit ang Suriin ang koneksyon."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_list
+msgid "Sync from Melaya"
+msgstr "I-sync mula sa Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__model
+msgid "Technical name"
+msgstr "Teknikal na Pangalan"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "That pipeline is not available on this record."
+msgstr "Hindi available ang daloy ng prosesong iyon sa rekord na ito."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "The approval page expired. The Melaya Agent user and its API key were removed. Start again."
+msgstr "Nag-expire ang pahina ng pag-apruba. Inalis ang gumagamit na Melaya Agent at ang API key nito. Simulan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+msgid "The brief is too long (%(max)s characters at most)."
+msgstr "Masyadong mahaba ang brief (%(max)s karakter pinakamarami)."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "The connection was cancelled in Melaya. The Melaya Agent user and its API key were removed."
+msgstr "Kinansela ang koneksyon sa Melaya. Inalis ang gumagamit na Melaya Agent at ang API key nito."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "The Melaya Agent user would get administrator rights. Remove those groups and try again."
+msgstr "Makakakuha ng karapatang admin ang gumagamit na Melaya Agent. Alisin ang mga grupong iyon at subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "The Melaya API URL must be an https:// address, for example https://api.melaya.org."
+msgstr "Dapat https:// address ang URL ng Melaya API, halimbawa https://api.melaya.org."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "the project owner"
+msgstr "ang may-ari ng proyekto"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "The stored Melaya connection is damaged. Disconnect and connect again in Settings > Melaya."
+msgstr "Sira ang nakaimbak na koneksyon ng Melaya. Idiskonekta at kumonekta ulit sa Mga Setting > Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "These pipelines do not exist in the Melaya project: %(names)s. Click Sync from Melaya to see the available ones."
+msgstr "Hindi umiiral ang mga daloy ng prosesong ito sa proyekto ng Melaya: %(names)s. I-click ang I-sync mula sa Melaya para makita ang mga available."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "These pipelines use personal connected accounts: %(names)s. Switch them to the project's connected accounts in Melaya, then save again."
+msgstr "Gumagamit ang mga daloy ng prosesong ito ng mga personal na nakakonektang account: %(names)s. Ilipat ang mga ito sa mga nakakonektang account ng proyekto sa Melaya, pagkatapos ay i-save ulit."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "This database is a copy of the one connected to Melaya. Connect it again from Settings &gt; Melaya."
+msgstr "Ang database na ito ay kopya ng nakakonekta sa Melaya. Ikonekta itong muli mula sa Mga Setting &gt; Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This database is a copy of the one connected to Melaya. Connect it again from Settings > Melaya."
+msgstr "Ang database na ito ay kopya ng nakakonekta sa Melaya. Ikonekta itong muli mula sa Mga Setting > Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "This database is already connected to Melaya. Disconnect it first."
+msgstr "Nakakonekta na ang database na ito sa Melaya. Idiskonekta muna ito."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This database is not connected to Melaya yet. An administrator can connect it in Settings > Melaya."
+msgstr "Hindi pa nakakonekta ang database na ito sa Melaya. Puwede itong ikonekta ng admin sa Mga Setting > Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_diagnostics.py:0
+msgid "This database is not connected to Melaya."
+msgstr "Hindi nakakonekta ang database na ito sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This kind of record is not exposed in Melaya. Ask your administrator to click Save to Melaya in Exposed models."
+msgstr "Hindi inilalantad sa Melaya ang ganitong uri ng rekord. Hilingin sa iyong admin na i-click ang I-save sa Melaya sa Mga Inilantad na Modelo."
+
+#. module: melaya_ai_agents
+#: model:ir.model.constraint,message:melaya_ai_agents.constraint_melaya_exposed_model_model_uniq
+msgid "This model is already exposed to Melaya."
+msgstr "Inilantad na ang modelong ito sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This pipeline uses personal connected accounts. Ask the project owner to switch it to the project's connected accounts."
+msgstr "Gumagamit ang daloy ng prosesong ito ng mga personal na nakakonektang account. Hilingin sa may-ari ng proyekto na ilipat ito sa mga nakakonektang account ng proyekto."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+msgid "This record does not exist or you cannot open it."
+msgstr "Hindi umiiral ang rekord na ito o hindi mo ito mabubuksan."
+
+#. module: melaya_ai_agents
+#: model:ir.model.constraint,message:melaya_ai_agents.constraint_melaya_user_link_user_uniq
+msgid "This user is already marked as linked."
+msgstr "Minarkahan na ang gumagamit na ito bilang naka-link."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/wizards/melaya_connect_wizard.py:0
+msgid "Tick I agree to send this data to Melaya to continue."
+msgstr "I-tsek ang Sumasang-ayon akong ipadala ang datos na ito sa Melaya para magpatuloy."
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "To change them, edit the Melaya Agent user in Settings, Users."
+msgstr "Para baguhin ang mga ito, i-edit ang gumagamit na Melaya Agent sa Mga Setting, Mga Gumagamit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Too many requests to Melaya. Wait a minute and try again."
+msgstr "Sobra ang bilang ng kahilingan sa Melaya. Maghintay ng isang minuto at subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Unknown"
+msgstr "Hindi Kilala"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Unlink"
+msgstr "I-unlink"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Unlink my Melaya account"
+msgstr "I-unlink ang aking Melaya account"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Unlink your Melaya account from this Odoo user? You leave the Melaya project if you joined it from Odoo."
+msgstr "I-unlink ang iyong Melaya account mula sa gumagamit na ito ng Odoo? Aalis ka sa proyekto ng Melaya kung sumali ka rito mula sa Odoo."
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__user_id
+#: model:res.groups,name:melaya_ai_agents.group_melaya_user
+msgid "User"
+msgstr "Gumagamit"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_connect_wizard__state__waiting
+msgid "Waiting for approval"
+msgstr "Naghihintay ng Pag-apruba"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "What Odoo sends to Melaya"
+msgstr "Ano ang Ipinapadala ng Odoo sa Melaya"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
+msgid "What Odoo sends to Melaya (api.melaya.org, over HTTPS)"
+msgstr "Ano ang Ipinapadala ng Odoo sa Melaya (api.melaya.org, sa pamamagitan ng HTTPS)"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "What should the pipeline focus on?"
+msgstr "Ano ang dapat pagtuunan ng daloy ng proseso?"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+msgid "Your Melaya account is no longer linked to this Odoo user."
+msgstr "Hindi na naka-link ang iyong Melaya account sa gumagamit na ito ng Odoo."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Your Melaya workspace for %(db)s is full. Ask %(owner)s to add seats."
+msgstr "Puno na ang workspace mo sa Melaya para sa %(db)s. Hilingin kay %(owner)s na magdagdag ng mga upuan."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Your Odoo server clock is off by about %(minutes)s minutes. Fix the server time and try again."
+msgstr "Mali ang oras ng iyong Odoo server nang mga %(minutes)s minuto. Ayusin ang oras ng server at subukan ulit."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Your role in the Melaya project does not allow this action."
+msgstr "Hindi pinapayagan ng role mo sa proyekto ng Melaya ang aksyong ito."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/controllers/main.py:0
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "Your role in the Melaya project is Viewer. Ask the project owner for the Runner role to run pipelines."
+msgstr "Manonood ang role mo sa proyekto ng Melaya. Hilingin sa may-ari ng proyekto ang role na Runner para makapagpatakbo ng mga daloy ng proseso."
+

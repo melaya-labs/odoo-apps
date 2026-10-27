@@ -1,9 +1,10 @@
-"""JSON-RPC routes used by the Melaya record panel.
+"""JSON-RPC routes used by the Melaya record panel, the chatter button and
+the top bar menu.
 
 The browser only talks to these routes; they call melaya.client server-side,
-so the install token never reaches the browser. Every route re-checks, as the
-logged-in user, the Melaya / User group, that the model is exposed and that
-the user can read the record.
+so the install token never reaches the browser. Every record route re-checks,
+as the logged-in user, the Melaya / User group, that the model is exposed and
+that the user can read the record.
 """
 import re
 
@@ -75,6 +76,10 @@ class MelayaPanelController(http.Controller):
                 if isinstance(p, dict) and isinstance(p.get("name"), str)
             ]
             runs = [r for r in (_clean_run(x) for x in data.get("runs") or []) if r]
+            request.env["melaya.exposed.model"]._remember_pipeline_names(pipelines)
+            # Keep Odoo's copy of the user's runs current; a run Melaya
+            # started after a "starting" answer is picked up here.
+            request.env["melaya.run"]._sync_from_panel(runs, record=record)
             role = data.get("role") if data.get("role") in ROLES else None
             reason = data.get("reason") if data.get("reason") in REASONS else None
             seat_full = reason == "seat_full" or bool(data.get("seat_full"))
@@ -140,8 +145,11 @@ class MelayaPanelController(http.Controller):
             if len(text) > MAX_BRIEF:
                 raise UserError(request.env._("The brief is too long (%(max)s characters at most).", max=MAX_BRIEF))
             data = request.env["melaya.client"]._run(model, record.id, pipeline.strip(), text.strip())
+            Runs = request.env["melaya.run"]
             if data.get("status") == "starting" and not data.get("run_id"):
-                # HTTP 202: Melaya records the run once it starts; the panel refreshes the card.
+                # HTTP 202: Melaya records the run once it starts; the panel refreshes the
+                # card, which matches the run to this placeholder.
+                Runs._record_start(record, pipeline.strip(), status="starting")
                 return {"starting": True, "message": request.env._("Melaya is starting the run. It will appear here in a moment.")}
             started = _clean_run({
                 "run_id": data.get("run_id"),
@@ -152,6 +160,7 @@ class MelayaPanelController(http.Controller):
             })
             if not started:
                 raise UserError(request.env._("Melaya did not confirm the run. Check the project in Melaya."))
+            Runs._record_start(record, pipeline.strip(), run_id=started["run_id"], status=started["status"], url=started["url"])
             return {"run": started}
         return self._call(run)
 
@@ -171,5 +180,18 @@ class MelayaPanelController(http.Controller):
                         "status": str(item.get("status") or ""),
                         "url": safe_url(item.get("url")) or "",
                     })
+            request.env["melaya.run"]._sync_from_panel(runs)
             return {"runs": runs}
         return self._call(run)
+
+    @http.route("/melaya_ai_agents/exposed_models", type="jsonrpc", auth="user", methods=["POST"])
+    def exposed_models(self, **kwargs):
+        """Models that show the Melaya button in the chatter for this user
+        (empty unless connected and in Melaya / User). The web client asks
+        once per page load."""
+        return request.env["melaya.record.panel"]._ui_config()
+
+    @http.route("/melaya_ai_agents/runs/recent", type="jsonrpc", auth="user", methods=["POST"])
+    def recent_runs(self, **kwargs):
+        """The user's own recent runs for the top bar menu (Odoo's copy, no call to Melaya)."""
+        return self._call(lambda: request.env["melaya.run"]._systray_data())

@@ -4,6 +4,7 @@ import re
 from odoo import fields, models, release
 from odoo.exceptions import UserError
 from odoo.fields import Command
+from odoo.tools import BinaryBytes, file_open
 
 from ..models.melaya_client import P_AGENT_USER, safe_url
 from ..models.res_config_settings import allowed_agent_groups, forbidden_agent_groups
@@ -11,7 +12,20 @@ from ..models.res_config_settings import allowed_agent_groups, forbidden_agent_g
 _logger = logging.getLogger(__name__)
 
 AGENT_NAME = "Melaya Agent"
+AGENT_AVATAR = "melaya_ai_agents/static/img/melaya_agent_avatar.png"
 API_KEY_NAME = "Melaya"
+
+
+def agent_avatar():
+    """The Melaya logo, for the Melaya Agent's picture in the chatter."""
+    with file_open(AGENT_AVATAR, "rb") as f:
+        return BinaryBytes(f.read(), filename="melaya_agent_avatar.png")
+
+
+def has_placeholder_avatar(user):
+    """True when the user has no picture or only Odoo's generated initial (an SVG)."""
+    image = user.image_1920
+    return not image or bytes(image).lstrip()[:5] in (b"<?xml", b"<svg ")
 CONFIRM_CODE_RE = re.compile(r"^[A-Z0-9-]{3,20}$")
 
 
@@ -71,9 +85,17 @@ class MelayaConnectWizard(models.TransientModel):
         user = Users.search([("login", "=", login)], limit=1)
         created = False
         if user:
-            user.write({"active": True, "group_ids": [Command.set(group_ids)]})
+            vals = {"active": True, "group_ids": [Command.set(group_ids)]}
+            if has_placeholder_avatar(user):
+                vals["image_1920"] = agent_avatar()
+            user.write(vals)
         else:
-            user = Users.create({"name": AGENT_NAME, "login": login, "group_ids": [Command.set(group_ids)]})
+            user = Users.create({
+                "name": AGENT_NAME,
+                "login": login,
+                "group_ids": [Command.set(group_ids)],
+                "image_1920": agent_avatar(),
+            })
             created = True
         if user.has_group("base.group_system") or user.has_group("base.group_erp_manager"):
             raise UserError(self.env._("The Melaya Agent user would get administrator rights. Remove those groups and try again."))

@@ -37,7 +37,7 @@ class MelayaExposedModel(models.Model):
     button_active = fields.Boolean(
         string="Show the Melaya action",
         default=True,
-        help="Adds a Melaya entry to the Actions menu of this model's form view for Melaya / User members.",
+        help="Adds a Melaya button to the chatter and a Melaya entry to the Actions menu of this model's form view for Melaya / User members.",
     )
     group_ids = fields.Many2many(
         "res.groups",
@@ -72,6 +72,30 @@ class MelayaExposedModel(models.Model):
             for p in items
             if isinstance(p, dict) and isinstance(p.get("id"), str)
         ]
+
+    @api.model
+    def _remember_pipeline_names(self, pipelines):
+        """Merge display names Melaya returned in a signed card answer into the
+        cached list, so runs and their notes show "Quote follow-up" rather
+        than the id even before an administrator syncs again. Only adds or
+        renames; never drops a pipeline. Writes only when something changed."""
+        cached = self._available_pipelines()
+        by_id = {p["id"]: p for p in cached}
+        changed = False
+        for item in pipelines or []:
+            pid, name = item.get("id"), item.get("name")
+            if not (isinstance(pid, str) and pid and isinstance(name, str) and name.strip()):
+                continue
+            name = name.strip()[:200]
+            if pid not in by_id:
+                by_id[pid] = {"id": pid, "name": name}
+                cached.append(by_id[pid])
+                changed = True
+            elif by_id[pid]["name"] != name:
+                by_id[pid]["name"] = name
+                changed = True
+        if changed:
+            self.env["melaya.client"]._param_set(P_PIPELINES, json.dumps(cached))
 
     @api.model
     def _resolve_pipeline(self, value):

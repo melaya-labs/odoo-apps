@@ -21,24 +21,94 @@ msgstr ""
 msgid ""
 "\n"
 "Connect this Odoo database to a Melaya project. Users in the Melaya / User\n"
-"group get a Melaya action on the records the administrator exposes: ask the\n"
-"Melaya Assistant about the record, run a Melaya pipeline with a short brief,\n"
-"and follow the run status. Changes Melaya makes in Odoo need an approval in\n"
-"Melaya. A free Melaya account is required.\n"
+"group get a Melaya button in the chatter (and Actions > Melaya) on the records\n"
+"the administrator exposes: ask the Melaya Assistant about the record, run a\n"
+"Melaya pipeline with a short brief, and follow the run status. Odoo logs\n"
+"approval reminders and run results on the record: a To-Do for the person who\n"
+"started a run while it waits for an approval in Melaya, and an internal note\n"
+"when the run is over. The Melaya menu in the top bar lists your recent runs.\n"
+"Changes Melaya makes in Odoo need an approval in Melaya. A free Melaya account\n"
+"is required.\n"
 "\n"
 "Data sent to Melaya (api.melaya.org, over HTTPS):\n"
 "when an administrator connects, the database name, URL and Odoo version, the\n"
 "login and API key of the Melaya Agent user the module creates, its groups,\n"
 "and the administrator's login and name; on each call, the model name, the\n"
 "record id, the Odoo user id (login and name once the user links a Melaya\n"
-"account) and the brief the user types. Never the record content: Melaya\n"
-"reads records as the Melaya Agent user, with the groups the administrator\n"
-"picked.\n"
+"account) and the brief the user types; to follow the runs started from Odoo,\n"
+"their run ids. Never the record content: Melaya reads records as the Melaya\n"
+"Agent user, with the groups the administrator picked, for every user of the\n"
+"project. Ask Melaya opens only after Odoo checks the user's read access to\n"
+"the record, and works on that record's own fields.\n"
+"\n"
+"Requirements: Odoo 20 at a public https address with the JSON-2 external\n"
+"API (the Odoo plan must include external API access). The Melaya Agent is an\n"
+"internal user: on Odoo plans billed per user it counts as one paid user.\n"
 msgstr ""
 "\n"
-"Conecta esta base de datos de Odoo a un proyecto de Melaya. Los usuarios del grupo Melaya / Usuario obtienen una acción de Melaya en los registros que el administrador expone: pueden preguntarle al Asistente de Melaya sobre el registro, ejecutar un pipeline de Melaya con un brief breve y seguir el estado de la ejecución. Los cambios que Melaya hace en Odoo necesitan una aprobación en Melaya. Se requiere una cuenta gratuita de Melaya.\n"
+"Conecta esta base de datos de Odoo a un proyecto de Melaya. Los\n"
+"usuarios del grupo Melaya / Usuario obtienen un botón de Melaya en\n"
+"el chatter (y en Acciones > Melaya) en los registros que el\n"
+"administrador expone: pueden preguntarle al Asistente de Melaya\n"
+"sobre el registro, ejecutar un pipeline de Melaya con un brief\n"
+"breve y seguir el estado de la ejecución. Odoo registra\n"
+"recordatorios de aprobación y resultados de las ejecuciones en el\n"
+"registro: una actividad Por hacer para la persona que inició una\n"
+"ejecución mientras espera una aprobación en Melaya, y una nota\n"
+"interna cuando la ejecución termina. El menú de Melaya en la barra\n"
+"superior enumera tus ejecuciones recientes. Los cambios que Melaya\n"
+"hace en Odoo necesitan una aprobación en Melaya. Se requiere una\n"
+"cuenta gratuita de Melaya.\n"
 "\n"
-"Datos enviados a Melaya (api.melaya.org, por HTTPS): cuando un administrador se conecta, el nombre de la base de datos, la URL y la versión de Odoo, el nombre de usuario y la clave API del usuario Melaya Agent que crea el módulo, sus grupos, y el nombre de usuario y el nombre del administrador; en cada llamada, el nombre del modelo, el id del registro, el id de usuario de Odoo (su nombre de usuario y su nombre una vez que el usuario vincula una cuenta de Melaya) y el brief que escribe. Nunca el contenido del registro: Melaya lee los registros como el usuario Melaya Agent, con los grupos que el administrador eligió.\n"
+"Datos enviados a Melaya (api.melaya.org, por HTTPS): cuando un\n"
+"administrador se conecta, el nombre de la base de datos, la URL y\n"
+"la versión de Odoo, el nombre de usuario y la clave API del usuario\n"
+"Melaya Agent que crea el módulo, sus grupos, y el nombre de usuario\n"
+"y el nombre del administrador; en cada llamada, el nombre del\n"
+"modelo, el id del registro, el id de usuario de Odoo (su nombre de\n"
+"usuario y su nombre una vez que el usuario vincula una cuenta de\n"
+"Melaya) y el brief que escribe; para seguir las ejecuciones\n"
+"iniciadas desde Odoo, sus id de ejecución. Nunca el contenido del\n"
+"registro: Melaya lee los registros como el usuario Melaya Agent,\n"
+"con los grupos que el administrador eligió, para cada usuario del\n"
+"proyecto. Preguntar a Melaya solo se abre después de que Odoo\n"
+"verifica el acceso de lectura del usuario al registro, y actúa\n"
+"solo sobre los campos propios de ese registro.\n"
+"\n"
+"Requisitos: Odoo 20 en una dirección https pública con la API\n"
+"externa JSON-2 (el plan de Odoo debe incluir acceso a la API\n"
+"externa). El Melaya Agent es un usuario interno: en los planes de\n"
+"Odoo facturados por usuario, cuenta como un usuario de pago.\n"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.js:0
+msgid "%(count)s waiting for your approval"
+msgstr "%(count)s esperando tu aprobación"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "%(name)s completed."
+msgstr "%(name)s se completó."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "%(name)s failed."
+msgstr "%(name)s falló."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "%(name)s is waiting for your approval in Melaya."
+msgstr "%(name)s está esperando tu aprobación en Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "%(name)s was canceled."
+msgstr "%(name)s se canceló."
 
 #. module: melaya_ai_agents
 #. odoo-python
@@ -65,8 +135,8 @@ msgstr "Agrega un modelo, enumera los pipelines de Melaya que puede ejecutar y l
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__button_active
-msgid "Adds a Melaya entry to the Actions menu of this model's form view for Melaya / User members."
-msgstr "Agrega una entrada de Melaya al menú Acciones de la vista de formulario de este modelo, para los miembros de Melaya / Usuario."
+msgid "Adds a Melaya button to the chatter and a Melaya entry to the Actions menu of this model's form view for Melaya / User members."
+msgstr "Agrega un botón de Melaya al chatter y una entrada de Melaya al menú Acciones de la vista de formulario de este modelo, para los miembros de Melaya / Usuario."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__group_ids
@@ -76,6 +146,7 @@ msgstr "Grupos permitidos"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_run__state__approval
 msgid "Approval needed"
 msgstr "Aprobación necesaria"
 
@@ -83,6 +154,22 @@ msgstr "Aprobación necesaria"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__approve_url
 msgid "Approval page"
 msgstr "Página de aprobación"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__activity_id
+msgid "Approval reminder"
+msgstr "Recordatorio de aprobación"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__approval_notified
+msgid "Approval reminder sent"
+msgstr "Recordatorio de aprobación enviado"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "Approve in Melaya"
+msgstr "Aprobar en Melaya"
 
 #. module: melaya_ai_agents
 #. odoo-javascript
@@ -98,6 +185,7 @@ msgstr "Pregúntale a Melaya sobre un registro y ejecuta tus pipelines de Melaya
 #. module: melaya_ai_agents
 #. odoo-python
 #: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
 msgid "Ask your administrator to add you to the Melaya / User group."
 msgstr "Pídele a tu administrador que te agregue al grupo Melaya / Usuario."
 
@@ -144,6 +232,12 @@ msgstr "Los cambios permanecen en Odoo hasta que hagas clic en Guardar en Melaya
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
 msgid "Check connection"
 msgstr "Verificar conexión"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.js:0
+msgid "Check in Melaya"
+msgstr "Verificar en Melaya"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
@@ -240,6 +334,7 @@ msgstr "Copia de una base de datos conectada"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__create_uid
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__create_uid
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__create_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
@@ -253,6 +348,7 @@ msgstr "Creado por este asistente"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__create_date
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__create_date
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__create_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__create_date
 msgid "Created on"
 msgstr "Creado el"
 
@@ -299,6 +395,7 @@ msgstr "¿Desconectar esta base de datos de Melaya? Los usuarios vinculados sale
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -358,6 +455,12 @@ msgid "Finish linking in the Melaya tab, then click I have linked my account."
 msgstr "Termina de vincular en la pestaña de Melaya y luego haz clic en Ya vinculé mi cuenta."
 
 #. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__finished_at
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_run__state__done
+msgid "Finished"
+msgstr "Finalizado"
+
+#. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
 msgid "Groups of the Odoo user Melaya works as. Pick only the apps Melaya needs. Administrator groups are never allowed."
 msgstr "Grupos del usuario de Odoo con el que trabaja Melaya. Elige solo las aplicaciones que Melaya necesita. Los grupos de administrador nunca están permitidos."
@@ -380,8 +483,14 @@ msgstr "Ya vinculé mi cuenta"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__id
 msgid "ID"
 msgstr "ID"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_run__state__running
+msgid "In progress"
+msgstr "En curso"
 
 #. module: melaya_ai_agents
 #. odoo-javascript
@@ -393,6 +502,11 @@ msgstr "Mantener la vinculación"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__last_seen_at
 msgid "Last call seen by Melaya"
 msgstr "Última llamada vista por Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__last_checked_at
+msgid "Last checked"
+msgstr "Última verificación"
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__server_last_error
@@ -409,6 +523,7 @@ msgstr "Último error visto por Odoo"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__write_uid
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__write_uid
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__write_uid
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
@@ -417,6 +532,7 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__write_date
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__write_date
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__write_date
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
 
@@ -463,6 +579,7 @@ msgstr "Vincular tu cuenta envía tu nombre de usuario de Odoo y tu nombre a Mel
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -484,6 +601,7 @@ msgstr "Gerente"
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_diagnostics_view_form
 #: model:ir.ui.menu,name:melaya_ai_agents.menu_melaya_root
+#: code:addons/melaya_ai_agents/static/src/chatter/chatter_patch.xml:0
 msgid "Melaya"
 msgstr "Melaya"
 
@@ -689,14 +807,47 @@ msgid "Melaya returned settings this version of the module cannot read."
 msgstr "Melaya devolvió una configuración que esta versión del módulo no puede leer."
 
 #. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "Melaya run"
+msgstr "Ejecución de Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_run
+msgid "Melaya run started from Odoo"
+msgstr "Ejecución de Melaya iniciada desde Odoo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.js:0
+msgid "Melaya: %(count)s waiting for your approval"
+msgstr "Melaya: %(count)s esperando tu aprobación"
+
+#. module: melaya_ai_agents
+#: model:ir.actions.server,name:melaya_ai_agents.ir_cron_melaya_follow_runs_ir_actions_server
+msgid "Melaya: follow runs started from Odoo"
+msgstr "Melaya: seguir las ejecuciones iniciadas desde Odoo"
+
+#. module: melaya_ai_agents
 #: model:ir.actions.server,name:melaya_ai_agents.ir_cron_melaya_members_sync_ir_actions_server
 msgid "Melaya: sync project members"
 msgstr "Melaya: sincronizar miembros del proyecto"
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.js:0
+msgid "Melaya: your recent runs"
+msgstr "Melaya: tus ejecuciones recientes"
+
+#. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__message
 msgid "Message"
 msgstr "Mensaje"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__model
+msgid "Model"
+msgstr "Modelo"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
@@ -715,6 +866,11 @@ msgid "Next, you sign in to Melaya and approve the connection. Melaya creates a 
 msgstr "A continuación, inicias sesión en Melaya y apruebas la conexión. Melaya crea un proyecto para esta base de datos o usa uno de tus proyectos. Los usuarios de Odoo que vinculan su cuenta de Melaya se unen al proyecto como Ejecutor."
 
 #. module: melaya_ai_agents
+#: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_run__state__stale
+msgid "No longer followed"
+msgstr "Seguimiento detenido"
+
+#. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "No pipeline is available for this kind of record. Ask your administrator to expose one."
@@ -725,6 +881,12 @@ msgstr "No hay ningún pipeline disponible para este tipo de registro. Pídele a
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "No runs on this record yet."
 msgstr "Todavía no hay ejecuciones en este registro."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
+msgid "No runs yet. Open a record, click Melaya and run a pipeline."
+msgstr "Todavía no hay ejecuciones. Abre un registro, haz clic en Melaya y ejecuta un pipeline."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields.selection,name:melaya_ai_agents.selection__melaya_connect_wizard__state__failed
@@ -750,6 +912,63 @@ msgstr "Odoo"
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
 msgid "Odoo creates a dedicated internal user, Melaya Agent, and an API key for it. Melaya reads and writes Odoo as this user only, with the groups below. It is never an administrator."
 msgstr "Odoo crea un usuario interno dedicado, Melaya Agent, y una clave API para él. Melaya lee y escribe en Odoo únicamente como este usuario, con los grupos indicados abajo. Nunca es un administrador."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/chatter/chatter_patch.xml:0
+msgid "Open Melaya on this record"
+msgstr "Abrir Melaya en este registro"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_run.py:0
+msgid "Open the run in Melaya"
+msgstr "Abrir la ejecución en Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__pipeline
+msgid "Pipeline id"
+msgstr "ID del pipeline"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__record_name
+msgid "Record"
+msgstr "Registro"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__res_id
+msgid "Record id"
+msgstr "ID del registro"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__result_posted
+msgid "Result posted"
+msgstr "Resultado publicado"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__run_id
+msgid "Run id"
+msgstr "ID de la ejecución"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__url
+msgid "Run in Melaya"
+msgstr "Ejecución en Melaya"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__user_id
+msgid "Started by"
+msgstr "Iniciado por"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__state
+msgid "State"
+msgstr "Estado"
+
+#. module: melaya_ai_agents
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__status
+msgid "Status in Melaya"
+msgstr "Estado en Melaya"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
@@ -811,6 +1030,7 @@ msgstr "Abre primero un registro."
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
 msgid "Open in Melaya"
 msgstr "Abrir en Melaya"
 
@@ -856,6 +1076,7 @@ msgstr "Elige al menos un grupo para el usuario Melaya Agent."
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__pipeline_name
 msgid "Pipeline"
 msgstr "Pipeline"
 
@@ -991,6 +1212,7 @@ msgstr "Iniciar conexión"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__started_at
 msgid "Started"
 msgstr "Iniciado"
 
@@ -1124,6 +1346,11 @@ msgid "This kind of record is not exposed in Melaya. Ask your administrator to c
 msgstr "Este tipo de registro no está expuesto en Melaya. Pídele a tu administrador que haga clic en Guardar en Melaya, en Modelos expuestos."
 
 #. module: melaya_ai_agents
+#: model:ir.model.constraint,message:melaya_ai_agents.constraint_melaya_run_run_id_uniq
+msgid "This Melaya run is already recorded."
+msgstr "Esta ejecución de Melaya ya está registrada."
+
+#. module: melaya_ai_agents
 #: model:ir.model.constraint,message:melaya_ai_agents.constraint_melaya_exposed_model_model_uniq
 msgid "This model is already exposed to Melaya."
 msgstr "Este modelo ya está expuesto a Melaya."
@@ -1220,6 +1447,12 @@ msgid "Your Melaya account is no longer linked to this Odoo user."
 msgstr "Tu cuenta de Melaya ya no está vinculada a este usuario de Odoo."
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
+msgid "Your Melaya runs"
+msgstr "Tus ejecuciones de Melaya"
+
+#. module: melaya_ai_agents
 #. odoo-python
 #: code:addons/melaya_ai_agents/controllers/main.py:0
 #: code:addons/melaya_ai_agents/models/melaya_client.py:0
@@ -1244,4 +1477,10 @@ msgstr "Tu rol en el proyecto de Melaya no permite esta acción."
 #: code:addons/melaya_ai_agents/models/melaya_client.py:0
 msgid "Your role in the Melaya project is Viewer. Ask the project owner for the Runner role to run pipelines."
 msgstr "Tu rol en el proyecto de Melaya es Visualizador. Pídele al propietario del proyecto el rol de Ejecutor para ejecutar pipelines."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
+msgid "Your runs could not be loaded. Try again in a moment."
+msgstr "Tus ejecuciones no se pudieron cargar. Intenta de nuevo en un momento."
 

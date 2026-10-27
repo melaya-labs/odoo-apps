@@ -10,5 +10,17 @@
             <field name="interval_number">1</field>
             <field name="interval_type">hours</field>
         </record>
+
+        <!-- Follows runs started from Odoo: one runs/status call per user and
+             20 runs (2 calls at most per user and minute; Melaya allows 30). -->
+        <record id="ir_cron_melaya_follow_runs" model="ir.cron" forcecreate="True">
+            <field name="name">Melaya: follow runs started from Odoo</field>
+            <field name="model_id" ref="model_melaya_run"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_follow_runs()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+        </record>
     </data>
 </odoo>

@@ -13,12 +13,12 @@ const POLL_DELAYS_MS = [4000, 8000, 15000, 30000];
 const POLL_STOP_MS = 30 * 60 * 1000;
 const STARTING_REFRESH_MS = 5000;
 const MAX_BRIEF = 6000;
-const FINISHED = new Set([
+export const FINISHED = new Set([
     "completed", "succeeded", "success", "done", "finished",
     "failed", "error", "cancelled", "canceled", "rejected", "expired",
 ]);
 
-function statusLabel(status) {
+export function statusLabel(status) {
     const labels = {
         started: _t("Started"),
         starting: _t("Starting"),
@@ -39,6 +39,7 @@ function statusLabel(status) {
         canceled: _t("Cancelled"),
         rejected: _t("Rejected"),
         expired: _t("Expired"),
+        unknown: _t("Unknown"),
     };
     return labels[status] || status || _t("Unknown");
 }

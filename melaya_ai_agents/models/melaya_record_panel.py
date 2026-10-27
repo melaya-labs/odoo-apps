@@ -45,6 +45,24 @@ class MelayaRecordPanel(models.AbstractModel):
         return record, exposed
 
     @api.model
+    def _ui_config(self):
+        """What the web client needs to show the Melaya button in the chatter
+        and the Melaya menu in the top bar: nothing unless the database is
+        connected and the user is in Melaya / User; then the exposed models
+        whose allowed groups include the user and that the user can read.
+        Every click is checked again by _check_record."""
+        user = self.env.user
+        if not user.has_group("melaya_ai_agents.group_melaya_user") or not self.env["melaya.client"]._is_connected():
+            return {"enabled": False, "models": []}
+        rows = self.env["melaya.exposed.model"].sudo().search([("button_active", "=", True)])
+        models_ = sorted({
+            row.model for row in rows
+            if row.model and MODEL_RE.match(row.model) and row.model in self.env
+            and row._user_allowed(user) and self.env[row.model].has_access("read")
+        })
+        return {"enabled": True, "models": models_}
+
+    @api.model
     def action_open_record_panel(self, model_name, record_ids):
         """Called by the bound "Melaya" server action; returns the panel client action."""
         ids = record_ids if isinstance(record_ids, (list, tuple)) else [record_ids]

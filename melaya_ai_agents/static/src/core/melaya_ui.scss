@@ -1,0 +1,7 @@
+// Melaya logo in the chatter button and the top bar. Bootstrap and Odoo
+// classes only around it, so the same rules work in Odoo's dark mode.
+.o_melaya_logo {
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 3px;
+}

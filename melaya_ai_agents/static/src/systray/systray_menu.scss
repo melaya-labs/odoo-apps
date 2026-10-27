@@ -1,0 +1,15 @@
+// Sizes only: colors come from Bootstrap classes, so dark mode works as is.
+.o_melaya_systray_menu {
+    width: 26rem;
+    max-width: calc(100vw - 1rem);
+}
+
+.o_melaya_systray {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.o_melaya_systray_main {
+    min-width: 0;
+    flex: 1 1 auto;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o-mail-Chatter-topbar')]/div[hasclass('gap-1')]" position="inside">
+            <button t-if="this.melayaVisible" type="button"
+                    class="o_melaya_chatter_button btn btn-secondary text-nowrap d-flex align-items-center gap-1"
+                    t-att-disabled="this.state.melayaBusy"
+                    t-on-click="this.onClickMelaya"
+                    title="Open Melaya on this record"
+                    aria-label="Open Melaya on this record">
+                <img src="/melaya_ai_agents/static/description/icon.png" alt="" class="o_melaya_logo" width="16" height="16"/>
+                <span>Melaya</span>
+            </button>
+        </xpath>
+    </t>
+
+</templates>

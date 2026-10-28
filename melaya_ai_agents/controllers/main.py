@@ -99,6 +99,7 @@ class MelayaPanelController(http.Controller):
                 "pipelines": pipelines,
                 "runs": runs,
                 "record_name": record.display_name or "",
+                "can_add_templates": request.env["melaya.record.panel"]._empty_state(model)["can_add_templates"],
             }
         return self._call(run)
 
@@ -190,6 +191,16 @@ class MelayaPanelController(http.Controller):
         (empty unless connected and in Melaya / User). The web client asks
         once per page load."""
         return request.env["melaya.record.panel"]._ui_config()
+
+    @http.route("/melaya_ai_agents/templates/list", type="jsonrpc", auth="user", methods=["POST"])
+    def templates_list(self, model="", **kwargs):
+        """Add from templates: the Odoo templates of Melaya (Settings administrators only)."""
+        return self._call(lambda: request.env["melaya.template.picker"]._picker_data(model if isinstance(model, str) else ""))
+
+    @http.route("/melaya_ai_agents/templates/add", type="jsonrpc", auth="user", methods=["POST"])
+    def templates_add(self, template_ids=None, **kwargs):
+        """Add from templates: create the ticked templates' pipelines and put them on the exposed models."""
+        return self._call(lambda: request.env["melaya.template.picker"]._add_templates(template_ids or []))
 
     @http.route("/melaya_ai_agents/runs/recent", type="jsonrpc", auth="user", methods=["POST"])
     def recent_runs(self, **kwargs):

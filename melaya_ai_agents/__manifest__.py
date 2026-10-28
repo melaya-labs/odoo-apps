@@ -1,13 +1,16 @@
 {
     "name": "Melaya AI Agents for Odoo",
-    "version": "20.0.1.1.0",
+    "version": "20.0.1.2.0",
     "category": "Productivity",
-    "summary": "Ask Melaya about a record and run your Melaya pipelines from Odoo",
+    "summary": "Ready-made AI agents on your Odoo records: run them from the chatter, approve before anything changes",
     "description": """
-Connect this Odoo database to a Melaya project. Users in the Melaya / User
-group get a Melaya button in the chatter (and Actions > Melaya) on the records
-the administrator exposes: ask the Melaya Assistant about the record, run a
-Melaya pipeline with a short brief, and follow the run status. Odoo logs
+Connect this Odoo database to a Melaya project. Administrators add ready-made
+agent pipelines in one click (Add from templates, for Sales, Accounting,
+Inventory, Manufacturing, HR, Projects and Helpdesk) or list their own. Users
+in the Melaya / User group get a Melaya button in the chatter (and Actions >
+Melaya) on the records the administrator exposes: ask the Melaya Assistant
+about the record, run a Melaya pipeline with a short brief, and follow the
+run status. Odoo logs
 approval reminders and run results on the record: a To-Do for the person who
 started a run while it waits for an approval in Melaya, and an internal note
 when the run is over. The Melaya menu in the top bar lists your recent runs.
@@ -52,7 +55,10 @@ internal user: on Odoo plans billed per user it counts as one paid user.
     },
     # Store cover first (the Melaya x Odoo banner), then the real record-panel
     # capture from a running Odoo 20 (see README).
-    "images": ["static/description/banner.png", "static/description/main_screenshot.png", "static/description/chatter_runs.png"],
+    "images": [
+        "static/description/banner.png", "static/description/main_screenshot.png",
+        "static/description/template_picker.png", "static/description/chatter_runs.png",
+    ],
     "uninstall_hook": "uninstall_hook",
     "installable": True,
     "application": True,

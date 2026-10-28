@@ -41,7 +41,14 @@
 
                     <section class="mb-4">
                         <h5>Run a Melaya pipeline</h5>
-                        <p class="text-muted" t-if="!this.state.pipelines.length">No pipeline is available for this kind of record. Ask your administrator to expose one.</p>
+                        <div class="o_melaya_empty border rounded p-3" t-if="!this.state.pipelines.length">
+                            <p class="mb-2">No Melaya pipeline for this kind of record yet.</p>
+                            <t t-if="this.state.canAddTemplates">
+                                <p class="small text-muted">Start from a ready-made template: Melaya adds it to your project and shows it here.</p>
+                                <button type="button" class="btn btn-primary" t-att-disabled="this.state.busy" t-on-click="this.onAddTemplates">Add from templates</button>
+                            </t>
+                            <p class="small text-muted mb-0" t-else="">Ask your administrator to add one in Melaya &gt; Exposed models.</p>
+                        </div>
                         <t t-else="">
                             <label class="form-label" for="o_melaya_pipeline">Pipeline</label>
                             <select id="o_melaya_pipeline" class="form-select mb-2" t-att-disabled="this.state.busy || !this.state.canRun" t-on-change="this.onPipelineChange">

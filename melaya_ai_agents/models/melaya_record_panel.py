@@ -63,6 +63,18 @@ class MelayaRecordPanel(models.AbstractModel):
         return {"enabled": True, "models": models_}
 
     @api.model
+    def _empty_state(self, model_name):
+        """What the panel shows when this kind of record has no pipeline:
+        Settings administrators of a connected database can add one from the
+        templates (the dialog filtered to this model); others are told whom to ask."""
+        user = self.env.user
+        can_add = user.has_group("base.group_system") and self.env["melaya.client"]._is_connected()
+        return {
+            "can_add_templates": bool(can_add),
+            "model": model_name if can_add and isinstance(model_name, str) and MODEL_RE.match(model_name) else "",
+        }
+
+    @api.model
     def action_open_record_panel(self, model_name, record_ids):
         """Called by the bound "Melaya" server action; returns the panel client action."""
         ids = record_ids if isinstance(record_ids, (list, tuple)) else [record_ids]

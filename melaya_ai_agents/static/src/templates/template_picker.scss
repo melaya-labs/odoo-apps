@@ -1,0 +1,15 @@
+// Add from templates dialog. Bootstrap and Odoo classes only for colors, so
+// the same rules work in Odoo's dark mode.
+.o_melaya_templates {
+    h5 {
+        font-weight: 600;
+    }
+
+    .o_melaya_template .form-check-label {
+        cursor: pointer;
+    }
+
+    .o_melaya_how_to {
+        white-space: pre-line;
+    }
+}

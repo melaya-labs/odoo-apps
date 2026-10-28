@@ -125,9 +125,50 @@ msgid "A model can expose at most %(count)s pipelines."
 msgstr "На одну модель можно открыть не более %(count)s конвейеров."
 
 #. module: melaya_ai_agents
-#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
-msgid "Add a model, list the Melaya pipelines it can run, then click Save to Melaya."
-msgstr "Добавь модель, укажи конвейеры Melaya, которые она может запускать, затем нажми «Сохранить в Melaya»."
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+msgid "Add"
+msgstr "Добавить"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+msgid "Add %s"
+msgstr "Добавить %s"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Add a %(provider)s key in the project's Connectors > AI Models, or pick another model in Melaya."
+msgstr "Добавь ключ %(provider)s в разделе проекта Коннекторы > AI Models, или выбери другую модель в Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Add at most %(count)s templates at a time."
+msgstr "Добавляй не более %(count)s шаблонов за раз."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_list
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Add from templates"
+msgstr "Добавить из шаблонов"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Added"
+msgstr "Добавлено"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Adding..."
+msgstr "Добавление..."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__button_active
@@ -135,9 +176,39 @@ msgid "Adds a Melaya button to the chatter and a Melaya entry to the Actions men
 msgstr "Добавляет кнопку Melaya в чаттер и пункт Melaya в меню действий формы этой модели для участников группы Melaya / Пользователь."
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "All templates"
+msgstr "Все шаблоны"
+
+#. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__group_ids
 msgid "Allowed groups"
 msgstr "Разрешённые группы"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Already added"
+msgstr "Уже добавлено"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Already in the Melaya project. Tick it to show it on Odoo records."
+msgstr "Уже в проекте Melaya. Отметь его, чтобы показать на записях Odoo."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Also needs:"
+msgstr "Также нужно:"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "App not installed"
+msgstr "Приложение не установлено"
 
 #. module: melaya_ai_agents
 #. odoo-javascript
@@ -179,6 +250,12 @@ msgid "Ask Melaya about a record and run your Melaya pipelines from Odoo"
 msgstr "Спрашивай Melaya о записях и запускай свои конвейеры Melaya из Odoo"
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Ask your administrator to add one in Melaya > Exposed models."
+msgstr "Попроси администратора добавить конвейер в Melaya > Открытые модели."
+
+#. module: melaya_ai_agents
 #. odoo-python
 #: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
 #: code:addons/melaya_ai_agents/models/melaya_run.py:0
@@ -193,6 +270,12 @@ msgstr "Для Melaya можно открыть не более %(count)s мод
 
 #. module: melaya_ai_agents
 #. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Before the first run"
+msgstr "Перед первым запуском"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "Brief (optional)"
 msgstr "Бриф (необязательно)"
@@ -203,6 +286,8 @@ msgid "Calls go to api.melaya.org over HTTPS."
 msgstr "Запросы идут на api.melaya.org по HTTPS."
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
 msgid "Cancel"
 msgstr "Отмена"
@@ -249,6 +334,11 @@ msgstr "Выбери виды записей, на которых показыв
 #: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
 msgid "Choose where the Melaya action appears"
 msgstr "Выбери, где показывается действие Melaya"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
+msgid "Click Add from templates to start from ready-made Melaya pipelines, or add a model, list the pipelines it can run, then click Save to Melaya."
+msgstr "Нажми «Добавить из шаблонов», чтобы начать с готовых конвейеров Melaya, или добавь модель, укажи конвейеры, которые она может запускать, затем нажми «Сохранить в Melaya»."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__clock_offset
@@ -349,6 +439,143 @@ msgid "Created on"
 msgstr "Дата создания"
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Done"
+msgstr "Готово"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "How to use it"
+msgstr "Как это использовать"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "In the project"
+msgstr "В проекте"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Install the Odoo app it works on first (%(apps)s)."
+msgstr "Сначала установи приложение Odoo, с которым он работает (%(apps)s)."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "It is in the Melaya project, but none of the Odoo apps it works on is installed here."
+msgstr "Он в проекте Melaya, но здесь не установлено ни одно из приложений Odoo, с которыми он работает."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "It uses %(services)s: connect it in the project's Connectors in Melaya if it is not connected yet."
+msgstr "Он использует %(services)s: подключи их в разделе проекта Коннекторы в Melaya, если они еще не подключены."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "It was already in the Melaya project."
+msgstr "Он уже был в проекте Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Loading the templates..."
+msgstr "Загрузка шаблонов..."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Melaya did not confirm the pipeline. Check the project in Melaya."
+msgstr "Melaya не подтвердила конвейер. Проверь проект в Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Melaya project:"
+msgstr "Проект Melaya:"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_template_picker
+msgid "Melaya templates for Odoo"
+msgstr "Шаблоны Melaya для Odoo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "No Melaya pipeline for this kind of record yet."
+msgstr "Для этого вида записей пока нет конвейера Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "No template for this kind of record yet."
+msgstr "Пока нет шаблона для этого вида записей."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Not added"
+msgstr "Не добавлено"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Not shown on these models (app not installed):"
+msgstr "Не показывается на этих моделях (приложение не установлено):"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Odoo apps:"
+msgstr "Приложения Odoo:"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Other"
+msgstr "Другое"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Pick ready-made pipelines for your Odoo records. Melaya adds them to your project and shows them in the Melaya button on the right records."
+msgstr "Выбери готовые конвейеры для своих записей Odoo. Melaya добавит их в твой проект и покажет их в кнопке Melaya на нужных записях."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Show all templates"
+msgstr "Показать все шаблоны"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Show only this kind of record"
+msgstr "Показать только этот вид записей"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Shows on:"
+msgstr "Показывается на:"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Start from a ready-made template: Melaya adds it to your project and shows it here."
+msgstr "Начни с готового шаблона: Melaya добавит его в твой проект и покажет здесь."
+
+#. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
 msgid "Subprocessors"
 msgstr "Субпроцессоры"
@@ -391,12 +618,13 @@ msgstr "Отключить эту базу данных от Melaya? Привя�
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_template_picker__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
 msgid "Display Name"
 msgstr "Отображаемое имя"
 
@@ -479,12 +707,13 @@ msgstr "Аккаунт привязан"
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_template_picker__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
 msgid "ID"
 msgstr "ID"
 
@@ -874,12 +1103,6 @@ msgstr "Больше не отслеживается"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
-msgid "No pipeline is available for this kind of record. Ask your administrator to expose one."
-msgstr "Для этого вида записей нет доступных конвейеров. Попроси администратора открыть хотя бы один."
-
-#. module: melaya_ai_agents
-#. odoo-javascript
-#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "No runs on this record yet."
 msgstr "На этой записи пока нет запусков."
 
@@ -970,6 +1193,18 @@ msgstr "Статус"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__status
 msgid "Status in Melaya"
 msgstr "Статус в Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Templates are not available from Melaya yet. Try again later, or add pipelines by name in Exposed models."
+msgstr "Шаблоны пока недоступны в Melaya. Попробуй снова позже или добавь конвейеры по имени в разделе Открытые модели."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Templates for:"
+msgstr "Шаблоны для:"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
@@ -1202,6 +1437,7 @@ msgstr "Показывать действие Melaya"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
 msgid "Something went wrong. Try again."
 msgstr "Что-то пошло не так. Попробуй снова."
 
@@ -1285,6 +1521,36 @@ msgstr "Пользователь Melaya Agent получил бы права а�
 #: code:addons/melaya_ai_agents/models/melaya_client.py:0
 msgid "The Melaya API URL must be an https:// address, for example https://api.melaya.org."
 msgstr "URL API Melaya должен быть адресом https://, например https://api.melaya.org."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "The pipelines are in Melaya, but saving the exposed models failed: %(error)s Fix it, then click Save to Melaya in Melaya > Exposed models."
+msgstr "Конвейеры в Melaya, но сохранить открытые модели не удалось: %(error)s Исправь это, затем нажми «Сохранить в Melaya» в Melaya > Открытые модели."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This template is no longer available. Close this window and open Add from templates again."
+msgstr "Этот шаблон больше не доступен. Закрой это окно и открой «Добавить из шаблонов» заново."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Tick at least one template."
+msgstr "Отметь хотя бы один шаблон."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Users click Melaya on a record, link their Melaya account the first time, then pick the pipeline and click Run pipeline."
+msgstr "Пользователи нажимают Melaya на записи, в первый раз привязывают свой аккаунт Melaya, затем выбирают конвейер и нажимают «Запустить конвейер»."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Users find it in the Melaya button on %(places)s records."
+msgstr "Пользователи найдут его в кнопке Melaya на записях %(places)s."
 
 #. module: melaya_ai_agents
 #. odoo-python
@@ -1484,4 +1750,3 @@ msgstr "У тебя роль Наблюдателя в проекте Melaya. П
 #: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
 msgid "Your runs could not be loaded. Try again in a moment."
 msgstr "Не удалось загрузить твои запуски. Попробуй снова через минуту."
-

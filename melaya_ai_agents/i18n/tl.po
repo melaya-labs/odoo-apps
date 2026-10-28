@@ -127,9 +127,50 @@ msgid "A model can expose at most %(count)s pipelines."
 msgstr "Isang modelo lang ang puwedeng maglantad ng hanggang %(count)s na daloy ng proseso."
 
 #. module: melaya_ai_agents
-#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
-msgid "Add a model, list the Melaya pipelines it can run, then click Save to Melaya."
-msgstr "Magdagdag ng modelo, ilista ang mga daloy ng proseso ng Melaya na puwede nitong patakbuhin, pagkatapos ay i-click ang I-save sa Melaya."
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+msgid "Add"
+msgstr "Idagdag"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+msgid "Add %s"
+msgstr "Idagdag %s"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Add a %(provider)s key in the project's Connectors > AI Models, or pick another model in Melaya."
+msgstr "Magdagdag ng %(provider)s key sa Mga Koneksyon > AI Models ng proyekto, o pumili ng ibang modelo sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Add at most %(count)s templates at a time."
+msgstr "Magdagdag ng hanggang %(count)s na template sa isang pagkakataon."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_form
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_exposed_model_view_list
+#: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
+msgid "Add from templates"
+msgstr "Idagdag mula sa mga template"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Added"
+msgstr "Naidagdag"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Adding..."
+msgstr "Nagdaragdag..."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,help:melaya_ai_agents.field_melaya_exposed_model__button_active
@@ -137,9 +178,39 @@ msgid "Adds a Melaya button to the chatter and a Melaya entry to the Actions men
 msgstr "Nagdaragdag ng button na Melaya sa chatter at ng opsyong Melaya sa menu ng Mga Aksyon ng form view ng modelong ito, para sa mga miyembro ng Melaya / Gumagamit."
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "All templates"
+msgstr "Lahat ng Template"
+
+#. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__group_ids
 msgid "Allowed groups"
 msgstr "Mga Pinapayagang Grupo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Already added"
+msgstr "Naidagdag Na"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Already in the Melaya project. Tick it to show it on Odoo records."
+msgstr "Nasa proyekto na ng Melaya. I-tsek ito para ipakita ito sa mga rekord ng Odoo."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Also needs:"
+msgstr "Kailangan Din:"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "App not installed"
+msgstr "Hindi Naka-install ang App"
 
 #. module: melaya_ai_agents
 #. odoo-javascript
@@ -181,6 +252,12 @@ msgid "Ask Melaya about a record and run your Melaya pipelines from Odoo"
 msgstr "Magtanong sa Melaya tungkol sa isang rekord at patakbuhin ang iyong mga daloy ng proseso ng Melaya mula sa Odoo"
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Ask your administrator to add one in Melaya > Exposed models."
+msgstr "Hilingin sa iyong admin na magdagdag ng isa sa Melaya > Mga Inilantad na Modelo."
+
+#. module: melaya_ai_agents
 #. odoo-python
 #: code:addons/melaya_ai_agents/models/melaya_record_panel.py:0
 #: code:addons/melaya_ai_agents/models/melaya_run.py:0
@@ -195,6 +272,12 @@ msgstr "Hanggang %(count)s na modelo lang ang puwedeng ilantad sa Melaya."
 
 #. module: melaya_ai_agents
 #. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Before the first run"
+msgstr "Bago ang Unang Takbo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "Brief (optional)"
 msgstr "Brief (opsyonal)"
@@ -205,6 +288,8 @@ msgid "Calls go to api.melaya.org over HTTPS."
 msgstr "Napupunta ang mga tawag sa api.melaya.org sa pamamagitan ng HTTPS."
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
 msgid "Cancel"
 msgstr "Kanselahin"
@@ -251,6 +336,11 @@ msgstr "Piliin ang mga uri ng rekord na nagpapakita ng aksyong Melaya, ang mga d
 #: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
 msgid "Choose where the Melaya action appears"
 msgstr "Piliin kung saan lalabas ang aksyong Melaya"
+
+#. module: melaya_ai_agents
+#: model_terms:ir.actions.act_window,help:melaya_ai_agents.action_melaya_exposed_model
+msgid "Click Add from templates to start from ready-made Melaya pipelines, or add a model, list the pipelines it can run, then click Save to Melaya."
+msgstr "I-click ang Idagdag mula sa mga template para magsimula sa mga handang-gamit na daloy ng proseso ng Melaya, o magdagdag ng modelo, ilista ang mga daloy ng proseso na puwede nitong patakbuhin, pagkatapos ay i-click ang I-save sa Melaya."
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__clock_offset
@@ -351,6 +441,143 @@ msgid "Created on"
 msgstr "Nilikha Noong"
 
 #. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Done"
+msgstr "Tapos"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "How to use it"
+msgstr "Paano Gamitin Ito"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "In the project"
+msgstr "Sa Proyekto"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Install the Odoo app it works on first (%(apps)s)."
+msgstr "I-install muna ang Odoo app kung saan ito gumagana (%(apps)s)."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "It is in the Melaya project, but none of the Odoo apps it works on is installed here."
+msgstr "Nasa proyekto ito ng Melaya, pero walang naka-install dito sa mga Odoo app na ginagamit nito."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "It uses %(services)s: connect it in the project's Connectors in Melaya if it is not connected yet."
+msgstr "Gumagamit ito ng %(services)s: ikonekta ito sa Mga Koneksyon ng proyekto sa Melaya kung hindi pa ito nakakonekta."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "It was already in the Melaya project."
+msgstr "Nasa proyekto na ito ng Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Loading the templates..."
+msgstr "Naglo-load ng mga template..."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Melaya did not confirm the pipeline. Check the project in Melaya."
+msgstr "Hindi kinumpirma ng Melaya ang daloy ng proseso. Suriin ang proyekto sa Melaya."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Melaya project:"
+msgstr "Proyekto ng Melaya:"
+
+#. module: melaya_ai_agents
+#: model:ir.model,name:melaya_ai_agents.model_melaya_template_picker
+msgid "Melaya templates for Odoo"
+msgstr "Mga Template ng Melaya para sa Odoo"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "No Melaya pipeline for this kind of record yet."
+msgstr "Wala pang daloy ng proseso ng Melaya para sa ganitong uri ng rekord."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "No template for this kind of record yet."
+msgstr "Wala pang template para sa ganitong uri ng rekord."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Not added"
+msgstr "Hindi Naidagdag"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Not shown on these models (app not installed):"
+msgstr "Hindi ipinapakita sa mga modelong ito (hindi naka-install ang app):"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Odoo apps:"
+msgstr "Mga Odoo App:"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Other"
+msgstr "Iba Pa"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Pick ready-made pipelines for your Odoo records. Melaya adds them to your project and shows them in the Melaya button on the right records."
+msgstr "Piliin mo ang mga handang-gamit na daloy ng proseso para sa iyong mga rekord ng Odoo. Idinadagdag ang mga ito ni Melaya sa iyong proyekto at ipinapakita ang mga ito sa pindutang Melaya sa mga tamang rekord."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Show all templates"
+msgstr "Ipakita ang lahat ng template"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Show only this kind of record"
+msgstr "Ipakita lang ang ganitong uri ng rekord"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Shows on:"
+msgstr "Ipinapakita sa:"
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
+msgid "Start from a ready-made template: Melaya adds it to your project and shows it here."
+msgstr "Simulan mo sa isang handang-gamit na template: idinadagdag ito ni Melaya sa iyong proyekto at ipinapakita ito dito."
+
+#. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.res_config_settings_view_form
 msgid "Subprocessors"
 msgstr "Mga Subprocessor"
@@ -393,12 +620,13 @@ msgstr "Idiskonekta ang database na ito mula sa Melaya? Aalis sa proyekto ang mg
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__display_name
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__display_name
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_template_picker__display_name
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__display_name
 msgid "Display Name"
 msgstr "Ipinapakitang Pangalan"
 
@@ -481,12 +709,13 @@ msgstr "Na-link ko na ang aking account"
 
 #. module: melaya_ai_agents
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_client__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__id
-#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_connect_wizard__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_diagnostics__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_exposed_model__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_record_panel__id
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_template_picker__id
+#: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_user_link__id
 msgid "ID"
 msgstr "ID"
 
@@ -876,12 +1105,6 @@ msgstr "Hindi na Sinusubaybayan"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
-msgid "No pipeline is available for this kind of record. Ask your administrator to expose one."
-msgstr "Walang available na daloy ng proseso para sa ganitong uri ng rekord. Hilingin sa iyong admin na maglantad ng isa."
-
-#. module: melaya_ai_agents
-#. odoo-javascript
-#: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.xml:0
 msgid "No runs on this record yet."
 msgstr "Wala pang takbo sa rekord na ito."
 
@@ -972,6 +1195,18 @@ msgstr "Kalagayan"
 #: model:ir.model.fields,field_description:melaya_ai_agents.field_melaya_run__status
 msgid "Status in Melaya"
 msgstr "Katayuan sa Melaya"
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Templates are not available from Melaya yet. Try again later, or add pipelines by name in Exposed models."
+msgstr "Hindi pa available ang mga template mula sa Melaya. Subukan ulit mamaya, o magdagdag ng mga daloy ng proseso ayon sa pangalan sa Mga Inilantad na Modelo."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Templates for:"
+msgstr "Mga Template para sa:"
 
 #. module: melaya_ai_agents
 #: model_terms:ir.ui.view,arch_db:melaya_ai_agents.melaya_connect_wizard_view_form
@@ -1204,6 +1439,7 @@ msgstr "Ipakita ang Aksyong Melaya"
 #. module: melaya_ai_agents
 #. odoo-javascript
 #: code:addons/melaya_ai_agents/static/src/record_panel/record_panel.js:0
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.js:0
 msgid "Something went wrong. Try again."
 msgstr "May nagkamali. Subukan ulit."
 
@@ -1287,6 +1523,36 @@ msgstr "Makakakuha ng karapatang admin ang gumagamit na Melaya Agent. Alisin ang
 #: code:addons/melaya_ai_agents/models/melaya_client.py:0
 msgid "The Melaya API URL must be an https:// address, for example https://api.melaya.org."
 msgstr "Dapat https:// address ang URL ng Melaya API, halimbawa https://api.melaya.org."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "The pipelines are in Melaya, but saving the exposed models failed: %(error)s Fix it, then click Save to Melaya in Melaya > Exposed models."
+msgstr "Nasa Melaya ang mga daloy ng proseso, pero nabigo ang pag-save ng mga inilantad na modelo: %(error)s Ayusin ito, pagkatapos ay i-click ang I-save sa Melaya sa Melaya > Mga Inilantad na Modelo."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_client.py:0
+msgid "This template is no longer available. Close this window and open Add from templates again."
+msgstr "Hindi na available ang template na ito. Isara ang window na ito at buksan ulit ang Idagdag mula sa mga template."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Tick at least one template."
+msgstr "I-tsek ang kahit isang template."
+
+#. module: melaya_ai_agents
+#. odoo-javascript
+#: code:addons/melaya_ai_agents/static/src/templates/template_picker.xml:0
+msgid "Users click Melaya on a record, link their Melaya account the first time, then pick the pipeline and click Run pipeline."
+msgstr "I-click ng mga gumagamit ang Melaya sa isang rekord, i-link ang kanilang Melaya account sa unang pagkakataon, pagkatapos piliin ang daloy ng proseso at i-click ang Patakbuhin ang Daloy ng Proseso."
+
+#. module: melaya_ai_agents
+#. odoo-python
+#: code:addons/melaya_ai_agents/models/melaya_template_picker.py:0
+msgid "Users find it in the Melaya button on %(places)s records."
+msgstr "Makikita ito ng mga gumagamit sa pindutang Melaya sa mga rekord na %(places)s."
 
 #. module: melaya_ai_agents
 #. odoo-python
@@ -1486,4 +1752,3 @@ msgstr "Manonood ang role mo sa proyekto ng Melaya. Hilingin sa may-ari ng proye
 #: code:addons/melaya_ai_agents/static/src/systray/systray_menu.xml:0
 msgid "Your runs could not be loaded. Try again in a moment."
 msgstr "Hindi na-load ang iyong mga takbo. Subukan ulit sa ilang sandali."
-

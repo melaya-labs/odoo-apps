@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="melaya_ai_agents.TemplatePicker">
+        <Dialog title="this.title" size="'lg'">
+            <div class="o_melaya_templates">
+                <div class="alert alert-danger" role="alert" t-if="this.state.error">
+                    <t t-out="this.state.error"/>
+                </div>
+
+                <div t-if="this.state.loading" class="text-muted" role="status">Loading the templates...</div>
+
+                <t t-elif="this.state.result">
+                    <div role="status" aria-live="polite">
+                        <section class="mb-3" t-if="this.state.result.added.length">
+                            <h5>Added</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="border rounded p-3 mb-2" t-foreach="this.state.result.added" t-as="item" t-key="item.id">
+                                    <div class="fw-semibold"><t t-out="item.name"/></div>
+                                    <div class="small text-muted" t-if="!item.created">It was already in the Melaya project.</div>
+                                    <div class="mt-1"><t t-out="item.where"/></div>
+                                    <div class="small text-muted mt-1" t-if="item.skipped.length"><span>Not shown on these models (app not installed):</span> <t t-out="item.skipped.join(', ')"/></div>
+                                    <t t-if="item.steps.length">
+                                        <div class="fw-semibold small mt-2">Before the first run</div>
+                                        <ul class="small mb-0 ps-3">
+                                            <li t-foreach="item.steps" t-as="step" t-key="step_index"><t t-out="step"/></li>
+                                        </ul>
+                                    </t>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="mb-3" t-if="this.state.result.failed.length">
+                            <h5>Not added</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="alert alert-warning mb-2" t-foreach="this.state.result.failed" t-as="item" t-key="item.id">
+                                    <span class="fw-semibold"><t t-out="this.templateName(item.id)"/>: </span><t t-out="item.message"/>
+                                </li>
+                            </ul>
+                        </section>
+                        <div class="alert alert-danger" role="alert" t-if="this.state.result.save_error">
+                            <t t-out="this.state.result.save_error"/>
+                        </div>
+                        <p class="small text-muted mb-0" t-if="this.state.result.saved">Users click Melaya on a record, link their Melaya account the first time, then pick the pipeline and click Run pipeline.</p>
+                    </div>
+                </t>
+
+                <t t-elif="!this.state.loadFailed">
+                    <p class="mb-1">Pick ready-made pipelines for your Odoo records. Melaya adds them to your project and shows them in the Melaya button on the right records.</p>
+                    <p class="small text-muted" t-if="this.state.projectName"><span>Melaya project:</span> <t t-out="this.state.projectName"/></p>
+
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3" t-if="this.state.model">
+                        <span class="text-muted" t-if="!this.state.showAll"><span>Templates for:</span> <strong><t t-out="this.state.modelLabel"/></strong></span>
+                        <span class="text-muted" t-else="">All templates</span>
+                        <button type="button" class="btn btn-link p-0" t-if="!this.state.showAll" t-on-click="this.onShowAll">Show all templates</button>
+                        <button type="button" class="btn btn-link p-0" t-else="" t-on-click="this.onShowModel">Show only this kind of record</button>
+                    </div>
+
+                    <p class="text-muted" t-if="!this.visible.length">No template for this kind of record yet.</p>
+
+                    <section class="mb-3" t-foreach="this.groups" t-as="group" t-key="group.key" t-att-aria-labelledby="'o_melaya_tpl_' + group.key">
+                        <h6 class="text-muted text-uppercase small fw-bold mb-2" t-att-id="'o_melaya_tpl_' + group.key"><t t-out="group.name"/></h6>
+                        <ul class="list-unstyled mb-0">
+                            <li class="o_melaya_template border rounded p-3 mb-2" t-foreach="group.templates" t-as="tpl" t-key="tpl.id"
+                                t-att-class="this.isSelected(tpl) ? 'border-primary' : ''">
+                                <div class="form-check mb-0">
+                                    <input type="checkbox" class="form-check-input" t-att-id="'o_melaya_tpl_cb_' + tpl.id"
+                                           t-att-checked="this.isSelected(tpl) or tpl.state === 'added'"
+                                           t-att-disabled="this.state.busy or !this.canPick(tpl)"
+                                           t-on-change="(ev) => this.onToggle(tpl, ev)"/>
+                                    <label class="form-check-label d-block" t-att-for="'o_melaya_tpl_cb_' + tpl.id">
+                                        <span class="fw-semibold me-2"><t t-out="tpl.name"/></span>
+                                        <span class="badge text-bg-warning me-1" t-if="tpl.enterprise">Enterprise</span>
+                                        <span class="badge text-bg-success me-1" t-if="tpl.state === 'added'">Already added</span>
+                                        <span class="badge text-bg-info me-1" t-if="tpl.state === 'in_project'">In the project</span>
+                                        <span class="badge text-bg-secondary me-1" t-if="tpl.state === 'unavailable'">App not installed</span>
+                                        <div class="mt-1" t-if="tpl.summary"><t t-out="tpl.summary"/></div>
+                                        <div class="small text-muted mt-1">
+                                            <div t-if="tpl.places"><span>Shows on:</span> <t t-out="tpl.places"/></div>
+                                            <div t-if="tpl.apps"><span>Odoo apps:</span> <t t-out="tpl.apps"/></div>
+                                            <div t-if="tpl.connectors"><span>Also needs:</span> <t t-out="tpl.connectors"/></div>
+                                            <div t-if="tpl.note"><t t-out="tpl.note"/></div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <details class="small mt-2" t-if="tpl.how_to_use">
+                                    <summary>How to use it</summary>
+                                    <p class="mb-0 mt-1 o_melaya_how_to"><t t-out="tpl.how_to_use"/></p>
+                                </details>
+                            </li>
+                        </ul>
+                    </section>
+                </t>
+            </div>
+            <t t-set-slot="footer">
+                <t t-if="this.state.result">
+                    <button type="button" class="btn btn-primary" t-on-click="this.onDone">Done</button>
+                </t>
+                <t t-else="">
+                    <button type="button" class="btn btn-primary" t-if="!this.state.loading and !this.state.loadFailed"
+                            t-att-disabled="this.state.busy or !this.state.selected.length" t-on-click="this.onAdd">
+                        <t t-if="this.state.busy">Adding...</t>
+                        <t t-else=""><t t-out="this.addLabel"/></t>
+                    </button>
+                    <button type="button" class="btn btn-secondary" t-on-click="() => this.props.close()">Cancel</button>
+                </t>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

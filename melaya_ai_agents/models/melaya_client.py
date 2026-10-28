@@ -331,6 +331,8 @@ class MelayaClient(models.AbstractModel):
                 "These pipelines do not exist in the Melaya project: %(names)s. Click Sync from Melaya to see the available ones.",
                 names=names,
             )
+        elif code == "template_not_found":
+            message = _("This template is no longer available. Close this window and open Add from templates again.")
         elif code == "empty_list":
             message = _("Melaya refused an empty member list. Nothing was changed.")
         elif code == "start_timeout":
@@ -531,6 +533,18 @@ class MelayaClient(models.AbstractModel):
     def _settings_set(self, auto_join, exposed):
         self._check_admin()
         return self._signed("settings/set", {"auto_join": bool(auto_join), "exposed": exposed}, timeout=RUN_TIMEOUT)
+
+    @api.model
+    def _templates_list(self):
+        """Odoo templates this install can add (admin only)."""
+        self._check_admin()
+        return self._signed("templates/list")
+
+    @api.model
+    def _templates_install(self, template_id):
+        """Create one template's pipeline in the project, or return the one already there (admin only)."""
+        self._check_admin()
+        return self._signed("templates/install", {"template_id": str(template_id)}, timeout=RUN_TIMEOUT)
 
     @api.model
     def _members_sync(self, active_user_ids):

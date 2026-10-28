@@ -4,6 +4,7 @@ import { DialogPlugin } from "@web/core/dialog/dialog_plugin";
 import { _t } from "@web/core/l10n/translation";
 import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
+import { useService } from "@web/core/utils/hooks";
 
 const ROUTE = "/melaya_ai_agents/panel/";
 // Run status polling: back off while nothing changes, reset on a change,
@@ -101,7 +102,9 @@ export class MelayaRecordPanel extends Component {
             brief: "",
             recordName: this.props.recordName || "",
             confirmUnlink: false,
+            canAddTemplates: false,
         });
+        this.actions = useService("action");
         this.pollTimer = null;
         this.refreshTimer = null;
         this.pollStep = 0;
@@ -234,6 +237,7 @@ export class MelayaRecordPanel extends Component {
             this.state.pipelines = result.pipelines;
             this.state.runs = result.runs;
             this.state.recordName = result.record_name || this.state.recordName;
+            this.state.canAddTemplates = Boolean(result.can_add_templates);
             if (!this.state.pipeline && result.pipelines.length) {
                 this.state.pipeline = result.pipelines[0].id;
             }
@@ -338,6 +342,17 @@ export class MelayaRecordPanel extends Component {
         } finally {
             this.state.busy = false;
         }
+    }
+
+    /** Administrators: Add from templates, filtered to this kind of record. */
+    async onAddTemplates() {
+        const model = this.props.model;
+        this.props.close();
+        await this.actions.doAction({
+            type: "ir.actions.client",
+            tag: "melaya_ai_agents.template_picker",
+            params: { model, reload: false },
+        });
     }
 
     onAskUnlink() {

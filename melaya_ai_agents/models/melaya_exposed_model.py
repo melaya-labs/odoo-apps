@@ -239,6 +239,11 @@ class MelayaExposedModel(models.Model):
             )
         return self._notify(message)
 
+    def action_open_templates(self):
+        """Add from templates, filtered to this row's model when opened from one row."""
+        model_name = self.model if len(self) == 1 else ""
+        return self.env["melaya.template.picker"].action_open(model_name or "")
+
     def action_save_to_melaya(self):
         self._push_to_melaya()
         return self._notify(self.env._("Exposed models and pipelines saved to Melaya."))

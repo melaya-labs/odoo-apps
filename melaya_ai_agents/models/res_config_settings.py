@@ -179,5 +179,8 @@ class ResConfigSettings(models.TransientModel):
         self.env["melaya.client"]._check_admin()
         return self.env["ir.actions.actions"]._for_xml_id("melaya_ai_agents.action_melaya_diagnostics")
 
+    def action_melaya_templates(self):
+        return self.env["melaya.template.picker"].action_open("")
+
     def action_melaya_exposed_models(self):
         return self.env["ir.actions.actions"]._for_xml_id("melaya_ai_agents.action_melaya_exposed_model")

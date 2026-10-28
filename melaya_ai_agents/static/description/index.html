@@ -12,16 +12,40 @@
             <img src="main_screenshot.png" alt="The Melaya panel on a quotation: Ask Melaya, Run a Melaya pipeline and the record's recent runs" class="img-fluid border rounded shadow-sm"/>
         </div>
 
+        <h3>How it works for your team</h3>
+        <ol class="lh-lg">
+            <li><b>Open a record</b>, for example a quotation, and click <b>Melaya</b> in the chatter.</li>
+            <li><b>Pick what you want done</b>, like "Stalled Quote Rescue", and add a short note if you want. Click Run.</li>
+            <li><b>Melaya's agents do the work</b>: they read the quotation, the customer and their history, and draft the follow-up.</li>
+            <li><b>You approve before anything happens.</b> Odoo puts an "Approve in Melaya" To-Do on the record. Nothing is sent and nothing in Odoo changes until you say yes.</li>
+            <li><b>The result lands on the record</b> as an internal note your customers never see.</li>
+        </ol>
+
+        <h3>Ready-made agents for every team</h3>
+        <p class="lh-lg">You do not have to build anything to start. An administrator clicks <b>Add from templates</b>, ticks the agent pipelines the team needs and clicks Add. Melaya creates them and Odoo puts each one on the right records. Each template explains what it does, where it shows and how to use it, and is tested on Odoo 20 Community and Enterprise. A few examples:</p>
+        <ul class="lh-lg">
+            <li><b>Sales</b>: Stalled Quote Rescue, Deal Desk Review, Account Brief Before Meeting, Pipeline and Forecast Review, Meeting Notes to CRM.</li>
+            <li><b>Accounting</b>: Vendor Bill Pre-Payment Check, Vendor Bank Change Guard, Collections Escalation Desk, 13-Week Cash Forecast, Month-End Close Sweep.</li>
+            <li><b>Inventory and Manufacturing</b>: Late Delivery Rescue, Supplier ETA Chaser, MRP Exceptions, Lot Recall Action Pack, Breakdown Impact and Fix Brief.</li>
+            <li><b>HR, Projects and Helpdesk</b>: New Hire Onboarding Orchestrator, Payroll Prep Check, SOW to Project Plan, Unbilled Time and Budget Burn Watch, Support Knowledge Gap Miner.</li>
+            <li><b>Leadership</b>: Daily Exceptions Brief, Monthly Management Report with Variance Commentary, Monthly Executive Narrative.</li>
+        </ul>
+        <p style="color: #475569;">Templates marked Enterprise use Odoo Enterprise apps such as Helpdesk, Subscriptions or Payroll. On Community, those parts say which app is missing instead of failing.</p>
+        <div class="text-center my-4">
+            <img src="template_picker.png" alt="Add from templates: ready-made Melaya agent pipelines grouped by Odoo app, each with what it does, where it shows and how to use it" class="img-fluid border rounded shadow-sm"/>
+        </div>
+
         <h3>What you get</h3>
         <ul class="lh-lg">
             <li><b>A Melaya button in the chatter</b> of the records you choose, next to Send message, Log note and Activity. <b>Actions &gt; Melaya</b> works too.</li>
             <li><b>Ask Melaya</b> on a quote, an invoice, a contact or any record you choose. The Melaya Assistant opens with the question ready. Nothing runs until you press Send.</li>
-            <li><b>Run a Melaya pipeline</b> on the record with a short brief: follow-ups, summaries, research, data clean-up, whatever your team built in Melaya.</li>
+            <li><b>Run a Melaya pipeline</b> on the record with a short brief: a ready-made template, or one your team built in Melaya.</li>
+            <li><b>Run on a schedule too.</b> Weekly reviews, morning briefs and month-end checks run on their own in Melaya and post their results the same way.</li>
             <li><b>Follow every run</b> from the record: queued, running, approval needed, completed or failed, with a link to the full run in Melaya. The Melaya menu in Odoo's top bar lists your recent runs and how many wait for your approval.</li>
             <li><b>Reminders and results on the record.</b> When a run waits for your approval, Odoo adds an "Approve in Melaya" To-Do for you on the record. When the run is over, Odoo logs an internal note with the result and a link to the run. Customers never see these notes.</li>
             <li><b>Approve before it writes.</b> Changes to Odoo always go through an approval in Melaya that names the operation, the records and the person who asked.</li>
             <li><b>Bring Odoo together with the rest of your stack</b>: email, chat, documents and the other services connected to your Melaya project.</li>
-            <li><b>Pick your AI.</b> Use the team's own provider key, or start with the free Melaya AI model.</li>
+            <li><b>Pick your AI.</b> Add your team's AI provider key once in the Melaya project, for example Qwen, OpenAI, Anthropic or Google. Templates start on Qwen 3.7 Plus and you can switch the model per pipeline.</li>
             <li><b>One workspace per database.</b> Colleagues who link their Melaya account join the same project as Runner. The project owner manages roles and seats in Melaya.</li>
             <li><b>Choose who uses it.</b> For each kind of record, pick the pipelines it can run and, if you want, the Odoo groups that can use Melaya on it.</li>
         </ul>
@@ -34,7 +58,8 @@
             <li>Install the module, then open <b>Settings &gt; Melaya</b>.</li>
             <li>Pick the groups of the <b>Melaya Agent</b> user (for example Sales and Invoicing). Administrator groups are never allowed.</li>
             <li>Click <b>Connect to Melaya</b>, review what Odoo sends, sign in to Melaya (or create a free account), check the confirmation code and approve the connection.</li>
-            <li>In <b>Melaya &gt; Exposed models</b>, choose where the Melaya action appears and which pipelines each model can run, then click <b>Save to Melaya</b>.</li>
+            <li>Click <b>Add from templates</b> and tick the agent pipelines your team needs. Odoo shows each one on the right records. To fine-tune, open <b>Melaya &gt; Exposed models</b>: choose where the Melaya action appears and which pipelines each kind of record can run, then click <b>Save to Melaya</b>.</li>
+            <li>In the Melaya project, add your AI provider key and connect the services some templates use, such as Gmail, Slack or Microsoft Teams. The Add result lists what each template needs.</li>
             <li>Add your colleagues to the <b>Melaya / User</b> group. On a record, they click <b>Melaya</b> in the chatter (or <b>Actions &gt; Melaya</b>) and link their Melaya account once.</li>
         </ol>
         <p style="color: #475569;">The connection creates one internal Odoo user, Melaya Agent, with an API key. On Odoo plans billed per user, the Melaya Agent counts as one paid internal user.</p>

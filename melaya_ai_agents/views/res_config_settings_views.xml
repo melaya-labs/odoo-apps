@@ -39,6 +39,7 @@
                         <setting id="melaya_exposed_setting" string="Exposed models" invisible="not melaya_connected" help="Choose the kinds of records that show the Melaya action, the pipelines each one can run and, if you want, which Odoo groups can use it.">
                             <field name="melaya_exposed_count" readonly="1"/>
                             <div class="mt8">
+                                <button name="action_melaya_templates" type="object" string="Add from templates" class="btn-link"/>
                                 <button name="action_melaya_exposed_models" type="object" string="Manage exposed models" class="btn-link"/>
                             </div>
                         </setting>

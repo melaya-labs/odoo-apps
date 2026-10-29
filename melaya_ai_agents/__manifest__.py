@@ -1,6 +1,10 @@
+# Odoo 19.0 overlay of melaya_ai_agents/__manifest__.py (20.0).
+# Differences: version 19.0.x, security/ir.model.access.csv instead of
+# security/ir.access.csv (no ir.access model in 19), Odoo 19 in the requirements.
+# Keep in sync: python integrations/odoo/compat/check_overlay.py
 {
     "name": "Melaya AI Agents for Odoo",
-    "version": "20.0.1.2.0",
+    "version": "19.0.1.2.0",
     "category": "Productivity",
     "summary": "Ready-made AI agents on your Odoo records: run them from the chatter, approve before anything changes",
     "description": """
@@ -28,7 +32,7 @@ Agent user, with the groups the administrator picked, for every user of the
 project. Ask Melaya opens only after Odoo checks the user's read access to
 the record, and works on that record's own fields.
 
-Requirements: Odoo 20 at a public https address with the JSON-2 external
+Requirements: Odoo 19 at a public https address with the JSON-2 external
 API (the Odoo plan must include external API access). The Melaya Agent is an
 internal user: on Odoo plans billed per user it counts as one paid user.
 """,
@@ -40,7 +44,7 @@ internal user: on Odoo plans billed per user it counts as one paid user.
     "external_dependencies": {"python": ["requests"]},
     "data": [
         "security/melaya_security.xml",
-        "security/ir.access.csv",
+        "security/ir.model.access.csv",
         "data/ir_cron_data.xml",
         "views/res_config_settings_views.xml",
         "views/melaya_exposed_model_views.xml",

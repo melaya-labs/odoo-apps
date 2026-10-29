@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_melaya_exposed_model_manager,melaya.exposed.model manager,model_melaya_exposed_model,melaya_ai_agents.group_melaya_manager,1,0,0,0
+access_melaya_exposed_model_system,melaya.exposed.model admin,model_melaya_exposed_model,base.group_system,1,1,1,1
+access_melaya_connect_wizard_system,melaya.connect.wizard admin,model_melaya_connect_wizard,base.group_system,1,1,1,1
+access_melaya_diagnostics_system,melaya.diagnostics admin,model_melaya_diagnostics,base.group_system,1,1,1,1
+access_melaya_user_link_system,melaya.user.link admin,model_melaya_user_link,base.group_system,1,0,0,0
+access_melaya_run_user,melaya.run own runs,model_melaya_run,melaya_ai_agents.group_melaya_user,1,0,0,0
+access_melaya_run_system,melaya.run admin,model_melaya_run,base.group_system,1,0,0,0

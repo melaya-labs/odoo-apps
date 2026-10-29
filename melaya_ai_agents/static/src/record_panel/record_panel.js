@@ -1,6 +1,9 @@
-import { Component, onMounted, onWillStart, onWillUnmount, proxy, t, useProps, usePlugin } from "@odoo/owl";
+// Odoo 19.0 overlay of melaya_ai_agents/static/src/record_panel/record_panel.js (20.0).
+// Difference: OWL 2 (Odoo 19) instead of OWL 3: useState for proxy, static
+// props for useProps, and the dialog service instead of the 20 DialogPlugin.
+// Keep in sync: python integrations/odoo/compat/check_overlay.py
+import { Component, onMounted, onWillStart, onWillUnmount, useState } from "@odoo/owl";
 import { Dialog } from "@web/core/dialog/dialog";
-import { DialogPlugin } from "@web/core/dialog/dialog_plugin";
 import { _t } from "@web/core/l10n/translation";
 import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
@@ -75,17 +78,18 @@ export class MelayaRecordPanel extends Component {
     static template = "melaya_ai_agents.RecordPanel";
     static components = { Dialog };
 
-    props = useProps({
-        close: t.function(),
-        model: t.string(),
-        recordId: t.number(),
-        recordName: t.string().optional(""),
-    });
+    static props = {
+        close: Function,
+        model: String,
+        recordId: Number,
+        recordName: { type: String, optional: true },
+    };
+    static defaultProps = { recordName: "" };
 
     setup() {
         this.title = String(_t("Melaya"));
         this.maxBrief = MAX_BRIEF;
-        this.state = proxy({
+        this.state = useState({
             loading: true,
             busy: false,
             error: "",
@@ -388,14 +392,11 @@ export class MelayaRecordPanel extends Component {
 
 /**
  * Client action returned by the bound "Melaya" server action. It opens the
- * panel in a dialog and stays on the current record. Function client actions
- * run inside the action plugin's scope (scope.run), so usePlugin resolves the
- * Odoo 20 DialogPlugin here; it must be called synchronously.
+ * panel in a dialog (Odoo 19 dialog service) and stays on the current record.
  */
 function openMelayaRecordPanel(env, action) {
-    const dialog = usePlugin(DialogPlugin);
     const params = action.params || {};
-    dialog.add(MelayaRecordPanel, {
+    env.services.dialog.add(MelayaRecordPanel, {
         model: String(params.model || ""),
         recordId: Number(params.record_id),
         recordName: String(params.record_name || ""),

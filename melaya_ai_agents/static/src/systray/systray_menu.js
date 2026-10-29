@@ -1,4 +1,7 @@
-import { Component, onMounted, onWillUnmount, proxy, status } from "@odoo/owl";
+// Odoo 19.0 overlay of melaya_ai_agents/static/src/systray/systray_menu.js (20.0).
+// Difference: OWL 2 (Odoo 19) has no proxy(); the state is a useState.
+// Keep in sync: python integrations/odoo/compat/check_overlay.py
+import { Component, onMounted, onWillUnmount, status, useState } from "@odoo/owl";
 import { Dropdown } from "@web/core/dropdown/dropdown";
 import { useDropdownState } from "@web/core/dropdown/dropdown_hooks";
 import { _t } from "@web/core/l10n/translation";
@@ -25,7 +28,7 @@ export class MelayaSystray extends Component {
     setup() {
         this.actions = useService("action");
         this.dropdown = useDropdownState();
-        this.state = proxy({
+        this.state = useState({
             enabled: false,
             loading: false,
             loaded: false,

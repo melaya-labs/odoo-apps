@@ -1,10 +1,16 @@
+# Odoo 19.0 overlay of melaya_ai_agents/wizards/melaya_connect_wizard.py (20.0).
+# Difference: no odoo.tools.BinaryBytes in 19 (new in 20). The avatar is
+# written base64-encoded and image_1920 reads back base64, so
+# agent_avatar() and has_placeholder_avatar() encode and decode it.
+# Keep in sync: python integrations/odoo/compat/check_overlay.py
+import base64
 import logging
 import re
 
 from odoo import fields, models, release
 from odoo.exceptions import UserError
 from odoo.fields import Command
-from odoo.tools import BinaryBytes, file_open
+from odoo.tools import file_open
 
 from ..models.melaya_client import P_AGENT_USER, safe_url
 from ..models.res_config_settings import allowed_agent_groups, forbidden_agent_groups
@@ -17,15 +23,21 @@ API_KEY_NAME = "Melaya"
 
 
 def agent_avatar():
-    """The Melaya logo, for the Melaya Agent's picture in the chatter."""
+    """The Melaya logo, for the Melaya Agent's picture in the chatter (base64, as Odoo 19 binary fields take it)."""
     with file_open(AGENT_AVATAR, "rb") as f:
-        return BinaryBytes(f.read(), filename="melaya_agent_avatar.png")
+        return base64.b64encode(f.read())
 
 
 def has_placeholder_avatar(user):
     """True when the user has no picture or only Odoo's generated initial (an SVG)."""
     image = user.image_1920
-    return not image or bytes(image).lstrip()[:5] in (b"<?xml", b"<svg ")
+    if not image:
+        return True
+    try:
+        head = base64.b64decode(image)
+    except (ValueError, TypeError):
+        head = bytes(image)
+    return head.lstrip()[:5] in (b"<?xml", b"<svg ")
 CONFIRM_CODE_RE = re.compile(r"^[A-Z0-9-]{3,20}$")
 
 

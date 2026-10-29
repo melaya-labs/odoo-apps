@@ -1,4 +1,8 @@
-import { Chatter } from "@mail/chatter/web_portal_project/chatter";
+// Odoo 19.0 overlay of melaya_ai_agents/static/src/chatter/chatter_patch.js (20.0).
+// Difference: Odoo 19 exports Chatter from @mail/chatter/web_portal/chatter
+// (20 moved it to web_portal_project).
+// Keep in sync: python integrations/odoo/compat/check_overlay.py
+import { Chatter } from "@mail/chatter/web_portal/chatter";
 
 import { status } from "@odoo/owl";
 

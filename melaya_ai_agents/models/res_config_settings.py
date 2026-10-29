@@ -1,3 +1,8 @@
+# Odoo 19.0 overlay of melaya_ai_agents/models/res_config_settings.py (20.0).
+# Difference: set_values() stores melaya_auto_join again after super().
+# Odoo 19 saves a False boolean config_parameter as set_param(key, False),
+# which deletes the parameter, and get_values() then shows the default True.
+# Keep in sync: python integrations/odoo/compat/check_overlay.py
 from odoo import api, fields, models
 from odoo.fields import Command
 
@@ -109,6 +114,8 @@ class ResConfigSettings(models.TransientModel):
         client = self.env["melaya.client"]
         old_auto_join = client._param_get_bool(P_AUTO_JOIN, True)
         super().set_values()
+        # Odoo 19 deletes a False boolean parameter; store "False" explicitly.
+        client._param_set_bool(P_AUTO_JOIN, self.melaya_auto_join)
         self._melaya_store_agent_groups()
         if client._is_connected() and bool(self.melaya_auto_join) != old_auto_join:
             self.env["melaya.exposed.model"]._push_to_melaya(auto_join=self.melaya_auto_join)

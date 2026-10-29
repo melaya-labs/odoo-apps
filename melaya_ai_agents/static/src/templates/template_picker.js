@@ -1,6 +1,9 @@
-import { Component, onWillStart, proxy, t, useProps, usePlugin } from "@odoo/owl";
+// Odoo 19.0 overlay of melaya_ai_agents/static/src/templates/template_picker.js (20.0).
+// Difference: OWL 2 (Odoo 19) instead of OWL 3: useState for proxy, static
+// props for useProps, and the dialog service instead of the 20 DialogPlugin.
+// Keep in sync: python integrations/odoo/compat/check_overlay.py
+import { Component, onWillStart, useState } from "@odoo/owl";
 import { Dialog } from "@web/core/dialog/dialog";
-import { DialogPlugin } from "@web/core/dialog/dialog_plugin";
 import { _t } from "@web/core/l10n/translation";
 import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
@@ -18,16 +21,17 @@ export class MelayaTemplatePicker extends Component {
     static template = "melaya_ai_agents.TemplatePicker";
     static components = { Dialog };
 
-    props = useProps({
-        close: t.function(),
-        model: t.string().optional(""),
-        reload: t.boolean().optional(false),
-    });
+    static props = {
+        close: Function,
+        model: { type: String, optional: true },
+        reload: { type: Boolean, optional: true },
+    };
+    static defaultProps = { model: "", reload: false };
 
     setup() {
         this.title = String(_t("Add from templates"));
         this.actions = useService("action");
-        this.state = proxy({
+        this.state = useState({
             loading: true,
             busy: false,
             error: "",
@@ -156,12 +160,11 @@ export class MelayaTemplatePicker extends Component {
 /**
  * Client action returned by melaya.template.picker.action_open (Exposed
  * models, Settings) and opened by the record panel. Like the record panel, it
- * opens a dialog over the current screen through the DialogPlugin.
+ * opens a dialog over the current screen through the Odoo 19 dialog service.
  */
 function openMelayaTemplatePicker(env, action) {
-    const dialog = usePlugin(DialogPlugin);
     const params = action.params || {};
-    dialog.add(MelayaTemplatePicker, {
+    env.services.dialog.add(MelayaTemplatePicker, {
         model: String(params.model || ""),
         reload: Boolean(params.reload),
     });

@@ -1,3 +1,13 @@
+# Odoo 19.0 overlay of melaya_ai_agents/tests/test_agent_user.py (20.0).
+# Difference: Odoo 19 binary fields read back base64 (20: raw bytes), and
+# image_process may re-encode the PNG, so the logo test compares the decoded
+# image size with the source PNG instead of the bytes.
+# Keep in sync: python integrations/odoo/compat/check_overlay.py
+import base64
+import io
+
+from PIL import Image
+
 from odoo.tests import TransactionCase, tagged
 
 from odoo.addons.melaya_ai_agents.wizards.melaya_connect_wizard import (
@@ -19,7 +29,9 @@ class TestMelayaAgentUser(TransactionCase):
         self.assertTrue(created)
         self.assertEqual(user.name, AGENT_NAME)
         self.assertFalse(has_placeholder_avatar(user))
-        self.assertEqual(bytes(user.image_1920), bytes(agent_avatar()))
+        stored = Image.open(io.BytesIO(base64.b64decode(user.image_1920)))
+        source = Image.open(io.BytesIO(base64.b64decode(agent_avatar())))
+        self.assertEqual(stored.size, source.size)
 
     def test_reused_agent_placeholder_is_replaced_custom_picture_kept(self):
         Users = self.env["res.users"].with_context(no_reset_password=True)

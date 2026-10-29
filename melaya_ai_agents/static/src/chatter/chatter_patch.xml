@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Odoo 19.0 overlay of melaya_ai_agents/static/src/chatter/chatter_patch.xml (20.0).
+     Difference: the anchor of the button in mail.Chatter (see below).
+     Keep in sync: python integrations/odoo/compat/check_overlay.py -->
 <templates xml:space="preserve">
 
     <t t-inherit="mail.Chatter" t-inherit-mode="extension">
-        <xpath expr="//div[hasclass('o-mail-Chatter-topbar')]/div[hasclass('gap-1')]" position="inside">
+        <!-- Odoo 19 has no div.gap-1 around the left buttons: the button goes right
+             before the spacer that ends them (after Activity, or after Log note on
+             models without activities), with the margins of Odoo 19's own buttons. -->
+        <xpath expr="//span[hasclass('o-mail-Chatter-topbarGrow')]" position="before">
             <button t-if="this.melayaVisible" type="button"
                     class="o_melaya_chatter_button btn btn-secondary text-nowrap d-flex align-items-center gap-1"
+                    t-att-class="{ 'my-2': !props.compactHeight, 'ms-1': props.has_activities }"
                     t-att-disabled="this.state.melayaBusy"
                     t-on-click="this.onClickMelaya"
                     title="Open Melaya on this record"

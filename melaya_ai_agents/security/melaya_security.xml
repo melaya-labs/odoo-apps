@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Odoo 19.0 overlay of melaya_ai_agents/security/melaya_security.xml (20.0).
+     Difference: the two ir.rule records at the end. On 20 the own-runs domain
+     lives in security/ir.access.csv (model ir.access, new in 20); 19 has
+     ir.model.access (security/ir.model.access.csv) plus these record rules.
+     Keep in sync: python integrations/odoo/compat/check_overlay.py -->
 <odoo>
     <record id="module_category_melaya" model="ir.module.category">
         <field name="name">Melaya</field>
@@ -26,5 +31,20 @@
         <field name="implied_ids" eval="[(4, ref('group_melaya_user'))]"/>
         <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         <field name="comment">Sees the Melaya menu and the exposed models. Joins the Melaya project as Runner, like every Odoo user; the project owner can change roles in Melaya.</field>
+    </record>
+
+    <!-- Odoo 19: group rules are ORed, so an administrator (also a Melaya user) sees every run. -->
+    <record id="rule_melaya_run_own" model="ir.rule">
+        <field name="name">Melaya runs: own runs</field>
+        <field name="model_id" ref="model_melaya_run"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_melaya_user'))]"/>
+    </record>
+
+    <record id="rule_melaya_run_admin" model="ir.rule">
+        <field name="name">Melaya runs: administrators</field>
+        <field name="model_id" ref="model_melaya_run"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
     </record>
 </odoo>
